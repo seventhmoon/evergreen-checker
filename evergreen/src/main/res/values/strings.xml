@@ -1,0 +1,42 @@
+<!--
+ Copyright 2020 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_name">Evergreen</string>
+
+  <string name="updates">Updates</string>
+  <string name="system_build">System Build</string>
+  <string name="remote_firmware">Remote Firmware</string>
+
+  <string name="update_required">Update required</string>
+  <string name="no_update_required">No update is required at this time</string>
+  <string name="unstable_version_detected">Unstable version detected</string>
+  <string name="app_not_installed">App not installed</string>
+  <string name="update_information_unknown">Update information unknown</string>
+  <string name="not_yet_supported">Not yet supported</string>
+
+  <string name="fix">Fix</string>
+  <string name="ignore">Ignore</string>
+  <string name="ok">OK</string>
+  <string name="qr_code">QR Code</string>
+
+  <string name="version_details"><xliff:g id="id">%1$s</xliff:g>\nInstalled: <xliff:g id="installed_version">%2$s</xliff:g>\nAvailable: <xliff:g id="available_version">%3$s</xliff:g></string>
+
+  <string name="unknown">Unknown</string>
+  <string name="error_no_app_to_handle_this_action">No app available to handle this action</string>
+  <string name="device_not_supported">This device is not currently supported\n<xliff:g id="device_id">%1$s</xliff:g></string>
+
+</resources>
