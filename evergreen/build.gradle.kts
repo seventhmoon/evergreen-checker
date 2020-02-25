@@ -25,7 +25,7 @@ plugins {
 }
 
 val versionMajor = 0
-val versionMinor = 3
+val versionMinor = 4
 val versionPatch = 0
 val isBeta = false
 
