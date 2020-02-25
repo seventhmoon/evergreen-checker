@@ -92,7 +92,7 @@ class EvergreenFragment : BrowseSupportFragment() {
           buttonClickListener = View.OnClickListener {
             QrCodeFragment().apply {
               arguments = Bundle().apply {
-                putString(EXTRA_TEXT, Repo.getConfigUrl(context, fetchError.deviceUniqueId))
+                putString(EXTRA_TEXT, fetchError.deviceUniqueId + "\n" + Repo.getConfigUrl(context, fetchError.deviceUniqueId))
               }
             }.show(this@EvergreenFragment.requireFragmentManager(), QrCodeFragment.TAG)
           }
