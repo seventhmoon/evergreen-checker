@@ -52,7 +52,7 @@ class UpdatesPresenter(private val dialogOpener: ((dialogFragment: DialogFragmen
     }, dialogOpener)
   }
 
-  override fun onBindViewHolder(viewHolder: Presenter.ViewHolder, item: Any?) {
+  override fun onBindViewHolder(viewHolder: Presenter.ViewHolder, item: Any) {
     (viewHolder as ViewHolder).bind(item as Updatable)
   }
 
@@ -113,8 +113,6 @@ class UpdatesPresenter(private val dialogOpener: ((dialogFragment: DialogFragmen
       }
     }
   }
-
-  companion object {
-    private const val MAIN_IMAGE_SIZE_DP = 300
-  }
 }
+
+const val MAIN_IMAGE_SIZE_DP = 300

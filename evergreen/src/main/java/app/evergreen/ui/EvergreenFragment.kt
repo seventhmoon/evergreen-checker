@@ -22,18 +22,18 @@ import androidx.leanback.app.ErrorSupportFragment
 import androidx.leanback.widget.*
 import androidx.lifecycle.Observer
 import app.evergreen.R
-import app.evergreen.R.string
 import app.evergreen.config.EvergreenConfig
 import app.evergreen.data.Repo
 import app.evergreen.extensions.color
 import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
+import app.evergreen.ui.advanced.AdvancedPresenter
+import app.evergreen.ui.advanced.PrintLatestLocalConfig
 import app.evergreen.ui.updates.UpdatesPresenter
 
 class EvergreenFragment : BrowseSupportFragment() {
   private val updatesPresenter =
-    UpdatesPresenter { dialogFragment, tag ->
-      dialogFragment.show(fragmentManager, tag)
-    }
+    UpdatesPresenter { dialogFragment, tag -> dialogFragment.show(fragmentManager, tag) }
+  private val advancedPresenter = AdvancedPresenter()
 
   private val rowsAdapter: ArrayObjectAdapter = ArrayObjectAdapter(ListRowPresenter())
 
@@ -51,24 +51,34 @@ class EvergreenFragment : BrowseSupportFragment() {
 
     Repo.evergreenConfig.observe(this, Observer<EvergreenConfig> { evergreenConfig ->
       rowsAdapter.clear()
-
-      val rowContents: ObjectAdapter = object : ObjectAdapter() {
-        override fun size(): Int {
-          return evergreenConfig.updatables.size
-        }
-
-        override fun get(position: Int): Any {
-          return evergreenConfig.updatables[position]
-        }
-      }.apply {
-        presenterSelector = object : PresenterSelector() {
-          override fun getPresenter(item: Any?) = updatesPresenter
-        }
-      }
+      rowsAdapter.add(
+        ListRow(HeaderItem(requireContext().getString(R.string.updates)), object : ObjectAdapter() {
+          override fun size() = evergreenConfig.updatables.size
+          override fun get(position: Int) = evergreenConfig.updatables[position]
+        }.apply<ObjectAdapter> {
+          presenterSelector = object : PresenterSelector() {
+            override fun getPresenter(item: Any?) = updatesPresenter
+          }
+        })
+      )
 
       rowsAdapter.add(
-        0,
-        ListRow(HeaderItem(requireContext().getString(string.updates)), rowContents)
+        ListRow(
+          HeaderItem(requireContext().getString(R.string.advanced)),
+          object : ObjectAdapter() {
+            override fun size() = 1
+            override fun get(position: Int) = when (position) {
+              0 -> PrintLatestLocalConfig()
+              else -> throw UnsupportedOperationException()
+            }
+          }.apply<ObjectAdapter> {
+            presenterSelector = object : PresenterSelector() {
+              override fun getPresenter(item: Any?) = when {
+                item is PrintLatestLocalConfig -> advancedPresenter
+                else -> throw UnsupportedOperationException()
+              }
+            }
+          })
       )
     })
 
