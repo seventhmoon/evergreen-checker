@@ -25,12 +25,12 @@ data class EvergreenConfig(
 
 @JsonClass(generateAdapter = true)
 data class Updatable(
-  val kind: Kind = APK,
-  val latestAlpha: Version? = null,
-  val latestBeta: Version? = null,
-  val latestProd: Version? = null,
+  var kind: Kind = APK,
+  var latestAlpha: Version? = null,
+  var latestBeta: Version? = null,
+  var latestProd: Version? = null,
   /** Nullable because Kind.OTA and Kind.REMOTE_FIRMWARE do not need an ID. */
-  val id: String? = null
+  var id: String? = null
 )
 
 enum class Kind {

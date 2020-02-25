@@ -28,7 +28,7 @@ class AdvancedPresenter : Presenter() {
       is PrintLatestLocalConfig -> {
         imageCardView.apply {
           titleText = context.getString(R.string.print_latest_local_config)
-          setOnClickListener { PrintLatestLocalConfig().print(context) }
+          setOnClickListener { PrintLatestLocalConfig(context).print() }
         }
       }
     }

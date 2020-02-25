@@ -68,7 +68,7 @@ class EvergreenFragment : BrowseSupportFragment() {
           object : ObjectAdapter() {
             override fun size() = 1
             override fun get(position: Int) = when (position) {
-              0 -> PrintLatestLocalConfig()
+              0 -> PrintLatestLocalConfig(requireContext())
               else -> throw UnsupportedOperationException()
             }
           }.apply<ObjectAdapter> {
