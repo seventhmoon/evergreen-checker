@@ -24,9 +24,12 @@ import androidx.fragment.app.DialogFragment
 import androidx.leanback.widget.BaseCardView.CARD_REGION_VISIBLE_ALWAYS
 import androidx.leanback.widget.BaseCardView.CARD_TYPE_INFO_UNDER_WITH_EXTRA
 import androidx.leanback.widget.ImageCardView
+import androidx.leanback.widget.ObjectAdapter
 import androidx.leanback.widget.Presenter
+import androidx.leanback.widget.PresenterSelector
 import app.evergreen.R
 import app.evergreen.R.color
+import app.evergreen.config.EvergreenConfig
 import app.evergreen.config.Kind.*
 import app.evergreen.config.Updatable
 import app.evergreen.extensions.color
@@ -39,8 +42,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+typealias DialogOpener = ((dialogFragment: DialogFragment, tag: String) -> Unit)
 
-class UpdatesPresenter(private val dialogOpener: ((dialogFragment: DialogFragment, tag: String) -> Unit)) : Presenter() {
+class UpdatesObjectAdapter(
+  private val evergreenConfig: EvergreenConfig,
+  private val dialogOpener: DialogOpener
+) : ObjectAdapter() {
+  init {
+    presenterSelector = object : PresenterSelector() {
+      override fun getPresenter(item: Any?) = UpdatesPresenter(dialogOpener)
+    }
+  }
+
+  override fun size() = evergreenConfig.updatables.size
+
+  override fun get(position: Int) = evergreenConfig.updatables[position]
+}
+
+private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Presenter() {
   override fun onCreateViewHolder(parent: ViewGroup): ViewHolder {
     return ViewHolder(ImageCardView(parent.context).apply {
       setMainImageDimensions(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
@@ -57,9 +76,10 @@ class UpdatesPresenter(private val dialogOpener: ((dialogFragment: DialogFragmen
   }
 
   override fun onUnbindViewHolder(viewHolder: Presenter.ViewHolder) {
+    // Nothing
   }
 
-  class ViewHolder(view: View, private val dialogOpener: (dialogFragment: DialogFragment, tag: String) -> Unit) : Presenter.ViewHolder(view) {
+  class ViewHolder(view: View, private val dialogOpener: DialogOpener) : Presenter.ViewHolder(view) {
     private val imageCardView: ImageCardView = view as ImageCardView
     private val context = view.context
 

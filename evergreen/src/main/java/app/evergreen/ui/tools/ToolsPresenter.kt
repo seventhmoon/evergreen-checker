@@ -35,7 +35,7 @@ class ToolsObjectAdapter(private val context: Context) : ObjectAdapter() {
   }
 }
 
-class ToolsPresenter : Presenter() {
+private class ToolsPresenter : Presenter() {
   override fun onCreateViewHolder(parent: ViewGroup): ViewHolder {
     return ViewHolder(ImageCardView(parent.context).apply {
       setMainImageDimensions(620, 0)
