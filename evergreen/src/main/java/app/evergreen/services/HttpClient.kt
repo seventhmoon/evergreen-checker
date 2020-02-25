@@ -16,6 +16,7 @@ package app.evergreen.services
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.CacheControl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
@@ -31,7 +32,11 @@ object HttpClient {
 
   suspend fun httpGet(url: String): String? = withContext(Dispatchers.IO) {
     try {
-      okHttpClient.newCall(Request.Builder().url(url).build()).execute().use { response ->
+      okHttpClient.newCall(
+        Request.Builder().url(url)
+          .cacheControl(CacheControl.Builder().noCache().build())
+          .build()
+      ).execute().use { response ->
         return@withContext if (response.isSuccessful) {
           response.body?.string()
         } else {
