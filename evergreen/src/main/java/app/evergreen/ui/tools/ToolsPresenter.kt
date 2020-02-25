@@ -16,9 +16,13 @@ package app.evergreen.ui.tools
 
 import android.content.Context
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.drawable.toDrawable
 import androidx.leanback.widget.*
 import app.evergreen.R
 import app.evergreen.extensions.color
+import app.evergreen.extensions.toTargetSize
+import app.evergreen.ui.updates.MAIN_IMAGE_SIZE_DP
 
 class ToolsObjectAdapter(private val context: Context) : ObjectAdapter() {
   init {
@@ -38,7 +42,7 @@ class ToolsObjectAdapter(private val context: Context) : ObjectAdapter() {
 private class ToolsPresenter : Presenter() {
   override fun onCreateViewHolder(parent: ViewGroup): ViewHolder {
     return ViewHolder(ImageCardView(parent.context).apply {
-      setMainImageDimensions(620, 0)
+      setMainImageDimensions(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
       isFocusable = true
       isFocusableInTouchMode = true
       cardType = BaseCardView.CARD_TYPE_INFO_UNDER_WITH_EXTRA
@@ -54,6 +58,9 @@ private class ToolsPresenter : Presenter() {
       is PrintLocalConfig -> {
         imageCardView.apply {
           titleText = context.getString(R.string.print_local_config)
+          mainImage = context.getDrawable(R.drawable.ic_code_json)!!.toBitmap()
+            .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
+            .toDrawable(context.resources)
           setOnClickListener { PrintLocalConfig(context).print() }
         }
       }
