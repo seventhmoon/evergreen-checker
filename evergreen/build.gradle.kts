@@ -42,7 +42,7 @@ android {
 
   signingConfigs {
     register("appSigningKey") {
-      val keystorePropsFile = File("keys/keystore.properties")
+      val keystorePropsFile = File("../keys/keystore.properties")
       if (keystorePropsFile.exists()) {
         val props = Properties()
         props.load(FileInputStream(keystorePropsFile))
