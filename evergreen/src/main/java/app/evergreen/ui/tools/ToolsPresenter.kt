@@ -12,18 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package app.evergreen.ui.advanced
+package app.evergreen.ui.tools
 
+import android.content.Context
 import android.view.ViewGroup
-import androidx.leanback.widget.BaseCardView
-import androidx.leanback.widget.ImageCardView
-import androidx.leanback.widget.Presenter
+import androidx.leanback.widget.*
 import app.evergreen.R
 import app.evergreen.extensions.color
 
-open class AdvancedItem
+class ToolsObjectAdapter(private val context: Context) : ObjectAdapter() {
+  init {
+    presenterSelector = object : PresenterSelector() {
+      override fun getPresenter(item: Any?) = ToolsPresenter()
+    }
+  }
 
-class AdvancedPresenter : Presenter() {
+  override fun size() = 1
+
+  override fun get(position: Int) = when (position) {
+    0 -> PrintLocalConfig(context)
+    else -> throw UnsupportedOperationException()
+  }
+}
+
+class ToolsPresenter : Presenter() {
   override fun onCreateViewHolder(parent: ViewGroup): ViewHolder {
     return ViewHolder(ImageCardView(parent.context).apply {
       setMainImageDimensions(620, 0)

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package app.evergreen.ui.advanced
+package app.evergreen.ui.tools
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -26,7 +26,7 @@ import app.evergreen.data.Repo
 import app.evergreen.extensions.toast
 import app.evergreen.services.log
 
-class PrintLocalConfig(private val context: Context) : AdvancedItem() {
+class PrintLocalConfig(private val context: Context) {
   fun print() {
     Repo.evergreenConfig.observeForever { evergreenConfig ->
       evergreenConfig.updatables.forEach { updatable ->

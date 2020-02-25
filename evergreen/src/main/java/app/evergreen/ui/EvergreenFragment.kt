@@ -26,14 +26,14 @@ import app.evergreen.config.EvergreenConfig
 import app.evergreen.data.Repo
 import app.evergreen.extensions.color
 import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
-import app.evergreen.ui.advanced.AdvancedPresenter
-import app.evergreen.ui.advanced.PrintLocalConfig
+import app.evergreen.ui.tools.ToolsPresenter
+import app.evergreen.ui.tools.PrintLocalConfig
+import app.evergreen.ui.tools.ToolsObjectAdapter
 import app.evergreen.ui.updates.UpdatesPresenter
 
 class EvergreenFragment : BrowseSupportFragment() {
   private val updatesPresenter =
     UpdatesPresenter { dialogFragment, tag -> dialogFragment.show(fragmentManager, tag) }
-  private val advancedPresenter = AdvancedPresenter()
 
   private val rowsAdapter: ArrayObjectAdapter = ArrayObjectAdapter(ListRowPresenter())
 
@@ -62,24 +62,7 @@ class EvergreenFragment : BrowseSupportFragment() {
         })
       )
 
-      rowsAdapter.add(
-        ListRow(
-          HeaderItem(requireContext().getString(R.string.advanced)),
-          object : ObjectAdapter() {
-            override fun size() = 1
-            override fun get(position: Int) = when (position) {
-              0 -> PrintLocalConfig(requireContext())
-              else -> throw UnsupportedOperationException()
-            }
-          }.apply<ObjectAdapter> {
-            presenterSelector = object : PresenterSelector() {
-              override fun getPresenter(item: Any?) = when (item) {
-                is PrintLocalConfig -> advancedPresenter
-                else -> throw UnsupportedOperationException()
-              }
-            }
-          })
-      )
+      rowsAdapter.add(ListRow(HeaderItem(requireContext().getString(R.string.tools)), ToolsObjectAdapter(requireContext())))
     })
 
     Repo.errors.observe(this, Observer { fetchError ->

@@ -21,7 +21,7 @@
   <string name="system_build">System Build</string>
   <string name="remote_firmware">Remote Firmware</string>
 
-  <string name="advanced">Advanced</string>
+  <string name="tools">Tools</string>
   <string name="print_local_config">Print Local Config</string>
 
   <string name="update_required">Update required</string>
