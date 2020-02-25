@@ -39,10 +39,10 @@ class AdvancedPresenter : Presenter() {
     val imageCardView: ImageCardView = viewHolder.view as ImageCardView
     val context = viewHolder.view.context
     when (item) {
-      is PrintLatestLocalConfig -> {
+      is PrintLocalConfig -> {
         imageCardView.apply {
-          titleText = context.getString(R.string.print_latest_local_config)
-          setOnClickListener { PrintLatestLocalConfig(context).print() }
+          titleText = context.getString(R.string.print_local_config)
+          setOnClickListener { PrintLocalConfig(context).print() }
         }
       }
     }

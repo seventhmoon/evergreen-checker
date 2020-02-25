@@ -26,16 +26,12 @@ import app.evergreen.data.Repo
 import app.evergreen.extensions.toast
 import app.evergreen.services.log
 
-class PrintLatestLocalConfig(private val context: Context) : AdvancedItem() {
+class PrintLocalConfig(private val context: Context) : AdvancedItem() {
   fun print() {
     Repo.evergreenConfig.observeForever { evergreenConfig ->
       evergreenConfig.updatables.forEach { updatable ->
         getInstalledVersion(updatable)?.let { installedVersion ->
-          updatable.latestProd?.versionName?.let { availableVersion ->
-            if (installedVersion > availableVersion) {
-              updatable.latestProd = Version(installedVersion)
-            }
-          }
+          updatable.latestProd = Version(installedVersion)
         }
       }
 

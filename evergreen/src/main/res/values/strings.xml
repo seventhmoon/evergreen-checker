@@ -22,7 +22,7 @@
   <string name="remote_firmware">Remote Firmware</string>
 
   <string name="advanced">Advanced</string>
-  <string name="print_latest_local_config">Print Latest Local Config</string>
+  <string name="print_local_config">Print Local Config</string>
 
   <string name="update_required">Update required</string>
   <string name="no_update_required">No update is required at this time</string>

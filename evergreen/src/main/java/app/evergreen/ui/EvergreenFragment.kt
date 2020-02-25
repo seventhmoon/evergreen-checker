@@ -27,7 +27,7 @@ import app.evergreen.data.Repo
 import app.evergreen.extensions.color
 import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
 import app.evergreen.ui.advanced.AdvancedPresenter
-import app.evergreen.ui.advanced.PrintLatestLocalConfig
+import app.evergreen.ui.advanced.PrintLocalConfig
 import app.evergreen.ui.updates.UpdatesPresenter
 
 class EvergreenFragment : BrowseSupportFragment() {
@@ -68,13 +68,13 @@ class EvergreenFragment : BrowseSupportFragment() {
           object : ObjectAdapter() {
             override fun size() = 1
             override fun get(position: Int) = when (position) {
-              0 -> PrintLatestLocalConfig(requireContext())
+              0 -> PrintLocalConfig(requireContext())
               else -> throw UnsupportedOperationException()
             }
           }.apply<ObjectAdapter> {
             presenterSelector = object : PresenterSelector() {
-              override fun getPresenter(item: Any?) = when {
-                item is PrintLatestLocalConfig -> advancedPresenter
+              override fun getPresenter(item: Any?) = when (item) {
+                is PrintLocalConfig -> advancedPresenter
                 else -> throw UnsupportedOperationException()
               }
             }
