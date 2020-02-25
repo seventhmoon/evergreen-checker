@@ -21,6 +21,9 @@
   <string name="system_build">System Build</string>
   <string name="remote_firmware">Remote Firmware</string>
 
+  <string name="advanced">Advanced</string>
+  <string name="print_latest_local_config">Print Latest Local Config</string>
+
   <string name="update_required">Update required</string>
   <string name="no_update_required">No update is required at this time</string>
   <string name="unstable_version_detected">Unstable version detected</string>
@@ -35,10 +38,8 @@
 
   <string name="version_details"><xliff:g id="id">%1$s</xliff:g>\nInstalled: <xliff:g id="installed_version">%2$s</xliff:g>\nAvailable: <xliff:g id="available_version">%3$s</xliff:g></string>
 
+  <string name="completed_successfully">Completed successfully</string>
   <string name="unknown">Unknown</string>
   <string name="error_no_app_to_handle_this_action">No app available to handle this action</string>
   <string name="device_not_supported">This device is not currently supported\n<xliff:g id="device_id">%1$s</xliff:g></string>
-  <string name="advanced">Advanced</string>
-  <string name="print_latest_local_config">Print Latest Local Config</string>
-
 </resources>

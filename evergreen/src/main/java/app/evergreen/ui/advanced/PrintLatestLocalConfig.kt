@@ -17,6 +17,7 @@ package app.evergreen.ui.advanced
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import app.evergreen.R
 import app.evergreen.config.*
 import app.evergreen.data.Repo
 import app.evergreen.extensions.toast
@@ -38,6 +39,7 @@ class PrintLatestLocalConfig(private val context: Context) : AdvancedItem() {
 
       val json = MoshiAdapters.updatablesAdapter.toJson(evergreenConfig)
       log(TAG, json)
+      context.toast(R.string.completed_successfully)
     }
   }
 
