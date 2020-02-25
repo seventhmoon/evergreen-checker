@@ -23,7 +23,7 @@
 
   <fragment
       android:id="@+id/version_fragment"
-      android:name="app.evergreen.ui.updates.UpdatesFragment"
+      android:name="app.evergreen.ui.EvergreenFragment"
       android:layout_width="match_parent"
       android:layout_height="match_parent" />
 

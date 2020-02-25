@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package app.evergreen.ui.updates
+package app.evergreen.ui
 
 import android.os.Bundle
 import android.view.View
@@ -26,13 +26,14 @@ import app.evergreen.R.string
 import app.evergreen.config.EvergreenConfig
 import app.evergreen.data.Repo
 import app.evergreen.extensions.color
-import app.evergreen.ui.QrCodeFragment
 import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
+import app.evergreen.ui.updates.UpdatesPresenter
 
-class UpdatesFragment : BrowseSupportFragment() {
-  private val updatesPresenter = UpdatesPresenter { dialogFragment, tag ->
-    dialogFragment.show(fragmentManager, tag)
-  }
+class EvergreenFragment : BrowseSupportFragment() {
+  private val updatesPresenter =
+    UpdatesPresenter { dialogFragment, tag ->
+      dialogFragment.show(fragmentManager, tag)
+    }
 
   private val rowsAdapter: ArrayObjectAdapter = ArrayObjectAdapter(ListRowPresenter())
 
@@ -74,7 +75,7 @@ class UpdatesFragment : BrowseSupportFragment() {
     Repo.errors.observe(this, Observer { fetchError ->
       requireFragmentManager().beginTransaction()
         .replace(android.R.id.content, ErrorSupportFragment().apply {
-          val context = this@UpdatesFragment.requireContext()
+          val context = this@EvergreenFragment.requireContext()
           imageDrawable = context.getDrawable(R.drawable.evergreen)
           message = fetchError.message
           buttonText = context.getString(R.string.qr_code)
@@ -83,7 +84,7 @@ class UpdatesFragment : BrowseSupportFragment() {
               arguments = Bundle().apply {
                 putString(EXTRA_TEXT, Repo.getConfigUrl(context, fetchError.deviceUniqueId))
               }
-            }.show(this@UpdatesFragment.requireFragmentManager(), QrCodeFragment.TAG)
+            }.show(this@EvergreenFragment.requireFragmentManager(), QrCodeFragment.TAG)
           }
         })
         .commit()
