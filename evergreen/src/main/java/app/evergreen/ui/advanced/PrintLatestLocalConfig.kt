@@ -18,11 +18,13 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import app.evergreen.R
-import app.evergreen.config.*
+import app.evergreen.config.Kind
+import app.evergreen.config.MoshiAdapters
+import app.evergreen.config.Updatable
+import app.evergreen.config.Version
 import app.evergreen.data.Repo
 import app.evergreen.extensions.toast
 import app.evergreen.services.log
-import app.evergreen.ui.updates.ApkViewModel
 
 class PrintLatestLocalConfig(private val context: Context) : AdvancedItem() {
   fun print() {
