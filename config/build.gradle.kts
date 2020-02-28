@@ -15,7 +15,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  application
   id("java")
   kotlin("jvm")
   kotlin("kapt")
