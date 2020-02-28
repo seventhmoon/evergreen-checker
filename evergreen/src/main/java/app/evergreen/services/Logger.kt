@@ -17,7 +17,7 @@ package app.evergreen.services
 import android.util.Log
 
 fun log(tag: String, message: String) {
-  Log.d(tag, message)
+  Log.i(tag, message)
 }
 
 fun log(tag: String, e: Throwable) {
