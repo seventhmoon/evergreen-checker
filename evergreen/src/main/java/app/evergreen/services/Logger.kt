@@ -21,8 +21,6 @@ fun log(tag: String, message: String) {
 }
 
 fun log(tag: String, e: Throwable) {
-  if (e.message != null) {
-    Log.e(tag, e.message!!)
-  }
+  e.message?.let { Log.e(tag, it) }
   e.printStackTrace()
 }
