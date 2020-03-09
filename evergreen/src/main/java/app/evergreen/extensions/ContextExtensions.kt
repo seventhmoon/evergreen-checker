@@ -53,6 +53,9 @@ fun Context.safeStartActivity(intent: Intent): Boolean {
   } catch (e: ActivityNotFoundException) {
     toast(R.string.error_no_app_to_handle_this_action)
     false
+  } catch (e: SecurityException) {
+    toast(e.localizedMessage ?: e.message ?: getString(R.string.unknown))
+    false
   }
 }
 
