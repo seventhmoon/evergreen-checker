@@ -31,10 +31,11 @@ class ToolsObjectAdapter(private val context: Context) : ObjectAdapter() {
     }
   }
 
-  override fun size() = 1
+  override fun size() = 2
 
   override fun get(position: Int): Tool = when (position) {
     0 -> PrintLocalConfig(context)
+    1 -> LaunchPlayStore(context)
     else -> throw UnsupportedOperationException()
   }
 }
@@ -63,6 +64,16 @@ private class ToolsPresenter : Presenter() {
             .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
             .toDrawable(context.resources)
           setOnClickListener { PrintLocalConfig(context).doAction() }
+        }
+      }
+      is LaunchPlayStore -> {
+        imageCardView.apply {
+          titleText = context.getString(R.string.play_store)
+          mainImage = context.getDrawable(R.drawable.google_play)!!
+            .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
+            .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
+            .toDrawable(context.resources)
+          setOnClickListener { LaunchPlayStore(context).doAction() }
         }
       }
     }
