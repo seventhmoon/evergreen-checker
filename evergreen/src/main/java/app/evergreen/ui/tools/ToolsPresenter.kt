@@ -58,7 +58,8 @@ private class ToolsPresenter : Presenter() {
       is PrintLocalConfig -> {
         imageCardView.apply {
           titleText = context.getString(R.string.print_local_config)
-          mainImage = context.getDrawable(R.drawable.ic_code_json)!!.toBitmap()
+          mainImage = context.getDrawable(R.drawable.ic_code_json)!!
+            .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
             .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
             .toDrawable(context.resources)
           setOnClickListener { PrintLocalConfig(context).doAction() }
