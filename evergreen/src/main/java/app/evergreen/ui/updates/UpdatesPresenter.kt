@@ -34,6 +34,7 @@ import app.evergreen.config.Kind.*
 import app.evergreen.config.Updatable
 import app.evergreen.extensions.color
 import app.evergreen.extensions.toTargetSize
+import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 import app.evergreen.ui.QrCodeFragment
 import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
 import app.evergreen.ui.updates.AbstractUpdatableViewModel.VersionStatus.*
@@ -134,5 +135,3 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
     }
   }
 }
-
-const val MAIN_IMAGE_SIZE_DP = 300

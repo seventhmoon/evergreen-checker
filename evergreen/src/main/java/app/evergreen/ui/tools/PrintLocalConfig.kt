@@ -16,15 +16,20 @@ package app.evergreen.ui.tools
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import android.os.Build
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.config.Kind
 import app.evergreen.config.MoshiAdapters
 import app.evergreen.config.Updatable
 import app.evergreen.config.Version
 import app.evergreen.data.Repo
+import app.evergreen.extensions.toTargetSize
 import app.evergreen.extensions.toast
 import app.evergreen.services.log
+import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
 class PrintLocalConfig(private val context: Context) : Tool {
 
@@ -41,9 +46,14 @@ class PrintLocalConfig(private val context: Context) : Tool {
     Kind.REMOTE_FIRMWARE -> null
   }
 
-  companion object {
-    private const val TAG = "PrintLatestLocalConfig"
-  }
+  override val titleText: String
+    get() = context.getString(R.string.print_local_config)
+
+  override val mainImage: Drawable
+    get() = context.getDrawable(R.drawable.ic_code_json)!!
+      .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
+      .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
+      .toDrawable(context.resources)
 
   override fun doAction() {
     Repo.evergreenConfig.observeForever { evergreenConfig ->
@@ -57,5 +67,9 @@ class PrintLocalConfig(private val context: Context) : Tool {
       log(TAG, json)
       context.toast(R.string.completed_successfully)
     }
+  }
+
+  companion object {
+    private const val TAG = "PrintLocalConfig"
   }
 }

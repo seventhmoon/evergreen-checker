@@ -15,14 +15,12 @@
 package app.evergreen.ui.tools
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import androidx.leanback.widget.*
 import app.evergreen.R
 import app.evergreen.extensions.color
-import app.evergreen.extensions.toTargetSize
-import app.evergreen.ui.updates.MAIN_IMAGE_SIZE_DP
+import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
 class ToolsObjectAdapter(private val context: Context) : ObjectAdapter() {
   init {
@@ -54,28 +52,11 @@ private class ToolsPresenter : Presenter() {
 
   override fun onBindViewHolder(viewHolder: ViewHolder, item: Any) {
     val imageCardView: ImageCardView = viewHolder.view as ImageCardView
-    val context = viewHolder.view.context
-    when (item) {
-      is PrintLocalConfig -> {
-        imageCardView.apply {
-          titleText = context.getString(R.string.print_local_config)
-          mainImage = context.getDrawable(R.drawable.ic_code_json)!!
-            .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-            .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-            .toDrawable(context.resources)
-          setOnClickListener { PrintLocalConfig(context).doAction() }
-        }
-      }
-      is LaunchPlayStore -> {
-        imageCardView.apply {
-          titleText = context.getString(R.string.play_store)
-          mainImage = context.getDrawable(R.drawable.google_play)!!
-            .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-            .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-            .toDrawable(context.resources)
-          setOnClickListener { LaunchPlayStore(context).doAction() }
-        }
-      }
+    val tool = item as Tool
+    imageCardView.apply {
+      titleText = tool.titleText
+      mainImage = tool.mainImage
+      setOnClickListener { tool.doAction() }
     }
   }
 
@@ -85,5 +66,7 @@ private class ToolsPresenter : Presenter() {
 }
 
 interface Tool {
+  val titleText: String
+  val mainImage: Drawable
   fun doAction()
 }

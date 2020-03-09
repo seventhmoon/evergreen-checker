@@ -85,3 +85,5 @@ class EvergreenFragment : BrowseSupportFragment() {
     })
   }
 }
+
+const val MAIN_IMAGE_SIZE_DP = 300
