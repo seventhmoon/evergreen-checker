@@ -24,15 +24,14 @@
   <string name="tools">Tools</string>
   <string name="print_local_config">Print Local Config</string>
 
-  <string name="update_required">Update required</string>
-  <string name="no_update_required">No update is required at this time</string>
-  <string name="unstable_version_detected">Unstable version detected</string>
-  <string name="app_not_installed">App not installed</string>
-  <string name="update_information_unknown">Update information unknown</string>
-  <string name="not_yet_supported">Not yet supported</string>
+  <string name="update_required">Update Required</string>
+  <string name="no_update_required">No Update Required</string>
+  <string name="newer_version_installed">Newer Version Installed</string>
+  <string name="app_not_installed">App Not Installed</string>
+  <string name="configuration_error">Configuration Error</string>
 
-  <string name="fix">Fix</string>
-  <string name="ignore">Ignore</string>
+  <string name="check_for_update">Check For Update</string>
+  <string name="cancel">Cancel</string>
   <string name="ok">OK</string>
   <string name="qr_code">QR Code</string>
 

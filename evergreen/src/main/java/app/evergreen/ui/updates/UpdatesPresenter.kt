@@ -37,7 +37,6 @@ import app.evergreen.extensions.toTargetSize
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 import app.evergreen.ui.QrCodeFragment
 import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
-import app.evergreen.ui.updates.AbstractUpdatableViewModel.VersionStatus.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -100,18 +99,11 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
           AlertDialog.Builder(context).apply {
             setTitle(updatableViewModel.dialogTitle)
             setMessage(updatableViewModel.dialogMessage)
-            when (updatableViewModel.versionStatus) {
-              VERSION_OLDER_THAN_LATEST, NOT_INSTALLED -> {
-                setPositiveButton(R.string.fix) { dialog, _ ->
-                  updatableViewModel.onUpdate()
-                  dialog.dismiss()
-                }
-                setNegativeButton(R.string.ignore) { dialog, _ -> dialog.dismiss() }
-              }
-              VERSION_NEWER_THAN_LATEST, VERSION_IS_LATEST, CONFIGURATION_ERROR -> {
-                setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
-              }
+            setPositiveButton(R.string.check_for_update) { dialog, _ ->
+              updatableViewModel.onUpdate()
+              dialog.dismiss()
             }
+            setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
             setNeutralButton(R.string.qr_code) { dialog, _ ->
               dialogOpener.invoke(QrCodeFragment().apply {
                 arguments = Bundle().apply {

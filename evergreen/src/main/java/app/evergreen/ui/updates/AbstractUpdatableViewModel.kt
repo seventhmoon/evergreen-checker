@@ -68,10 +68,10 @@ abstract class AbstractUpdatableViewModel(
     get() = context.getString(
       when (versionStatus) {
         VERSION_OLDER_THAN_LATEST -> R.string.update_required
-        VERSION_NEWER_THAN_LATEST -> R.string.unstable_version_detected
+        VERSION_NEWER_THAN_LATEST -> R.string.newer_version_installed
         VERSION_IS_LATEST -> R.string.no_update_required
         NOT_INSTALLED -> R.string.app_not_installed
-        CONFIGURATION_ERROR -> R.string.update_information_unknown
+        CONFIGURATION_ERROR -> R.string.configuration_error
       }
     )
 
