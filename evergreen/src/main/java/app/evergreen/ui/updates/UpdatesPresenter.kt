@@ -37,6 +37,7 @@ import app.evergreen.extensions.toTargetSize
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 import app.evergreen.ui.QrCodeFragment
 import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
+import app.evergreen.ui.updates.AbstractUpdatableViewModel.VersionStatus.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -94,6 +95,15 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
         titleText = updatableViewModel.titleText
         contentText = updatableViewModel.contentText
         setInfoAreaBackgroundColor(context.color(updatableViewModel.backgroundColor))
+        badgeImage = context.getDrawable(
+          when (updatableViewModel.versionStatus) {
+            VERSION_OLDER_THAN_LATEST -> R.drawable.cellphone_arrow_down
+            VERSION_NEWER_THAN_LATEST -> R.drawable.bomb
+            VERSION_IS_LATEST -> R.drawable.check_bold
+            NOT_INSTALLED -> R.drawable.help_circle
+            CONFIGURATION_ERROR -> R.drawable.skull_crossbones
+          }
+        )
 
         setOnClickListener {
           AlertDialog.Builder(context).apply {
