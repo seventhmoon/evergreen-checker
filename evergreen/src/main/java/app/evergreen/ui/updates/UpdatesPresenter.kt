@@ -127,7 +127,7 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
       CoroutineScope(Dispatchers.Main).launch {
         imageCardView.mainImage = withContext(Dispatchers.IO) {
           updatableViewModel.getIcon()
-            .toBitmap()
+            .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
             .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
             .toDrawable(context.resources)
         }
