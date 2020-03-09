@@ -55,7 +55,12 @@ object Repo {
 
         val jsonString = httpGet(configUrl)
         if (jsonString == null) {
-          errorsLiveData.postValue(FetchError(deviceUniqueId, context.getString(R.string.device_not_supported, deviceUniqueId)))
+          errorsLiveData.postValue(
+            FetchError(
+              deviceUniqueId,
+              context.getString(R.string.device_not_supported, deviceUniqueId)
+            )
+          )
           return@withContext
         }
 

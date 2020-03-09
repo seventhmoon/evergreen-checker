@@ -21,7 +21,7 @@ fun Bitmap.toTargetSize(targetWidth: Int, targetHeight: Int): Bitmap {
   val targetBitmap = Bitmap.createBitmap(targetWidth, targetHeight, config)
   val canvas = Canvas(targetBitmap)
 
-  val boundingBoxWidth :Int = (targetWidth * 0.6).toInt()
+  val boundingBoxWidth: Int = (targetWidth * 0.6).toInt()
   val boundingBoxHeight: Int = (targetHeight * 0.6).toInt()
 
   val left: Float = (targetWidth * 0.2).toFloat()
