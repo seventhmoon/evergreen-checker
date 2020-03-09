@@ -26,20 +26,7 @@ import app.evergreen.data.Repo
 import app.evergreen.extensions.toast
 import app.evergreen.services.log
 
-class PrintLocalConfig(private val context: Context) {
-  fun print() {
-    Repo.evergreenConfig.observeForever { evergreenConfig ->
-      evergreenConfig.updatables.forEach { updatable ->
-        getInstalledVersion(updatable)?.let { installedVersion ->
-          updatable.latestProd = Version(installedVersion)
-        }
-      }
-
-      val json = MoshiAdapters.updatablesAdapter.toJson(evergreenConfig)
-      log(TAG, json)
-      context.toast(R.string.completed_successfully)
-    }
-  }
+class PrintLocalConfig(private val context: Context) : Tool {
 
   private fun getInstalledVersion(updatable: Updatable): String? = when (updatable.kind) {
     Kind.APK -> {
@@ -56,5 +43,19 @@ class PrintLocalConfig(private val context: Context) {
 
   companion object {
     private const val TAG = "PrintLatestLocalConfig"
+  }
+
+  override fun doAction() {
+    Repo.evergreenConfig.observeForever { evergreenConfig ->
+      evergreenConfig.updatables.forEach { updatable ->
+        getInstalledVersion(updatable)?.let { installedVersion ->
+          updatable.latestProd = Version(installedVersion)
+        }
+      }
+
+      val json = MoshiAdapters.updatablesAdapter.toJson(evergreenConfig)
+      log(TAG, json)
+      context.toast(R.string.completed_successfully)
+    }
   }
 }

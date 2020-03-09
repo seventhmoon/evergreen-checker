@@ -33,7 +33,7 @@ class ToolsObjectAdapter(private val context: Context) : ObjectAdapter() {
 
   override fun size() = 1
 
-  override fun get(position: Int) = when (position) {
+  override fun get(position: Int): Tool = when (position) {
     0 -> PrintLocalConfig(context)
     else -> throw UnsupportedOperationException()
   }
@@ -61,7 +61,7 @@ private class ToolsPresenter : Presenter() {
           mainImage = context.getDrawable(R.drawable.ic_code_json)!!.toBitmap()
             .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
             .toDrawable(context.resources)
-          setOnClickListener { PrintLocalConfig(context).print() }
+          setOnClickListener { PrintLocalConfig(context).doAction() }
         }
       }
     }
@@ -70,4 +70,8 @@ private class ToolsPresenter : Presenter() {
   override fun onUnbindViewHolder(viewHolder: ViewHolder) {
     // Nothing
   }
+}
+
+interface Tool {
+  fun doAction()
 }
