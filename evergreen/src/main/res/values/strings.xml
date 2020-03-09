@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  Copyright 2020 Google LLC
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,4 +42,5 @@
   <string name="unknown">Unknown</string>
   <string name="error_no_app_to_handle_this_action">No app available to handle this action</string>
   <string name="device_not_supported">This device is not currently supported\n<xliff:g id="device_id">%1$s</xliff:g></string>
+  <string name="play_store">Play Store</string>
 </resources>
