@@ -22,6 +22,7 @@ plugins {
   id("kotlin-android")
   id("kotlin-android-extensions")
   id("com.google.gms.google-services")
+  id("com.google.firebase.crashlytics")
 }
 
 val versionMajor = 0
@@ -101,4 +102,5 @@ dependencies {
   implementation("com.squareup.okhttp3:okhttp:4.2.2")
   implementation("io.coil-kt:coil:0.9.5")
   implementation("com.google.firebase:firebase-analytics:17.2.2")
+  implementation("com.google.firebase:firebase-crashlytics:17.0.0-beta01")
 }
