@@ -16,6 +16,7 @@ package app.evergreen.ui.updates
 
 import android.content.Context
 import android.content.pm.PackageManager
+import androidx.core.content.pm.PackageInfoCompat
 import app.evergreen.R
 import app.evergreen.config.Updatable
 import app.evergreen.services.Opener.openPlayStore
@@ -33,6 +34,18 @@ class ApkViewModel(context: Context, updatable: Updatable) :
       try {
         @Suppress("DEPRECATION")
         context.packageManager.getPackageInfo(updatable.id!!, 0).versionName
+      } catch (e: PackageManager.NameNotFoundException) {
+        log(TAG, e)
+        null // App not installed, so it does not have a version name yet.
+      }
+    }
+
+  override val installedVersionCode: Long?
+    get() = if (updatable.id == null) {
+      null
+    } else {
+      try {
+        PackageInfoCompat.getLongVersionCode(context.packageManager.getPackageInfo(updatable.id!!, 0))
       } catch (e: PackageManager.NameNotFoundException) {
         log(TAG, e)
         null // App not installed, so it does not have a version name yet.

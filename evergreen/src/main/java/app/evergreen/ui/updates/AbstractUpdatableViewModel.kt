@@ -31,6 +31,9 @@ abstract class AbstractUpdatableViewModel(
   open val installedVersion: String?
     get() = null
 
+  open val installedVersionCode: Long?
+    get() = null
+
   open val versionStatus: VersionStatus
     get() {
       val installedVersion = installedVersion
@@ -76,7 +79,9 @@ abstract class AbstractUpdatableViewModel(
     )
 
   open val dialogMessage: String
-    get() = context.getString(R.string.version_details, titleText, installedVersion, availableVersion)
+    get() = context.getString(R.string.version_details, titleText,
+      installedVersion + (if (installedVersionCode != null) " ($installedVersionCode)" else ""),
+      availableVersion)
 
   enum class VersionStatus {
     VERSION_OLDER_THAN_LATEST,
