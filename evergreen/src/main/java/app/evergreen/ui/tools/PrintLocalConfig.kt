@@ -50,7 +50,7 @@ class PrintLocalConfig(private val context: Context) : Tool {
     get() = context.getString(R.string.print_local_config)
 
   override val mainImage: Drawable
-    get() = context.getDrawable(R.drawable.ic_code_json)!!
+    get() = context.getDrawable(R.drawable.code_json)!!
       .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
       .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
       .toDrawable(context.resources)

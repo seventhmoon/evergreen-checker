@@ -67,7 +67,7 @@ class ApkViewModel(context: Context, updatable: Updatable) :
     context.packageManager.getApplicationIcon(updatable.id!!)
   } catch (e: PackageManager.NameNotFoundException) {
     log(TAG, e)
-    Coil.get(R.drawable.ic_apps)
+    Coil.get(R.drawable.apps)
   }
 
   override fun onUpdate() = openPlayStore(context, updatable.id!!)
