@@ -20,7 +20,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
-import androidx.fragment.app.DialogFragment
 import androidx.leanback.widget.BaseCardView.CARD_REGION_VISIBLE_ALWAYS
 import androidx.leanback.widget.BaseCardView.CARD_TYPE_INFO_UNDER_WITH_EXTRA
 import androidx.leanback.widget.ImageCardView
@@ -34,6 +33,7 @@ import app.evergreen.config.Kind.*
 import app.evergreen.config.Updatable
 import app.evergreen.extensions.color
 import app.evergreen.extensions.toTargetSize
+import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 import app.evergreen.ui.QrCodeFragment
 import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
@@ -42,8 +42,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
-typealias DialogOpener = ((dialogFragment: DialogFragment, tag: String) -> Unit)
 
 class UpdatesObjectAdapter(
   private val evergreenConfig: EvergreenConfig,

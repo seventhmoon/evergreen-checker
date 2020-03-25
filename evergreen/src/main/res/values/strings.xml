@@ -42,4 +42,6 @@
   <string name="error_no_app_to_handle_this_action">No app available to handle this action</string>
   <string name="device_not_supported">This device is not currently supported\n<xliff:g id="device_id">%1$s</xliff:g></string>
   <string name="play_store">Play Store</string>
+  <string name="adb_config">ADB Config</string>
+  <string name="adb_endpoint_info">adb -s %1$s<xliff:g id="newline">\n</xliff:g>scrcpy -s %1$s</string>
 </resources>

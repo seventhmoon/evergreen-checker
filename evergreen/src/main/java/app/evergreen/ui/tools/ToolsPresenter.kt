@@ -20,20 +20,22 @@ import android.view.ViewGroup
 import androidx.leanback.widget.*
 import app.evergreen.R
 import app.evergreen.extensions.color
+import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
-class ToolsObjectAdapter(private val context: Context) : ObjectAdapter() {
+class ToolsObjectAdapter(private val context: Context, private val dialogOpener: DialogOpener) : ObjectAdapter() {
   init {
     presenterSelector = object : PresenterSelector() {
       override fun getPresenter(item: Any?) = ToolsPresenter()
     }
   }
 
-  override fun size() = 2
+  override fun size() = 3
 
   override fun get(position: Int): Tool = when (position) {
-    0 -> PrintLocalConfig(context)
-    1 -> LaunchPlayStore(context)
+    0 -> AdbConfig(context, dialogOpener)
+    1 -> PrintLocalConfig(context)
+    2 -> LaunchPlayStore(context)
     else -> throw UnsupportedOperationException()
   }
 }

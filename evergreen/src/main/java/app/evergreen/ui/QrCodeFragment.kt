@@ -26,6 +26,8 @@ import app.evergreen.services.log
 import coil.api.load
 import java.net.URLEncoder.encode
 
+typealias DialogOpener = ((dialogFragment: DialogFragment, tag: String) -> Unit)
+
 class QrCodeFragment : DialogFragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     return inflater.inflate(R.layout.fragment_qr_code, container, false)
