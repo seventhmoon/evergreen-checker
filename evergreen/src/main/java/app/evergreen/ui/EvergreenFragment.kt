@@ -28,7 +28,6 @@ import app.evergreen.R
 import app.evergreen.config.EvergreenConfig
 import app.evergreen.data.Repo
 import app.evergreen.extensions.color
-import app.evergreen.ui.QrCodeFragment.Companion.EXTRA_TEXT
 import app.evergreen.ui.tools.ToolsObjectAdapter
 import app.evergreen.ui.updates.UpdatesObjectAdapter
 
@@ -73,14 +72,9 @@ class EvergreenFragment : BrowseSupportFragment() {
           message = fetchError.message
           buttonText = context.getString(R.string.qr_code)
           buttonClickListener = View.OnClickListener {
-            QrCodeFragment().apply {
-              arguments = Bundle().apply {
-                putString(
-                  EXTRA_TEXT,
-                  fetchError.deviceUniqueId + "\n" + Repo.getConfigUrl(context, fetchError.deviceUniqueId)
-                )
-              }
-            }.show(this@EvergreenFragment.requireFragmentManager(), QrCodeFragment.TAG)
+            QrCodeFragment.withText(
+              fetchError.deviceUniqueId + "\n" + Repo.getConfigUrl(context, fetchError.deviceUniqueId)
+            ).show(this@EvergreenFragment.requireFragmentManager(), QrCodeFragment.TAG)
           }
         })
         .commit()

@@ -26,8 +26,6 @@ import app.evergreen.services.log
 import coil.api.load
 import java.net.URLEncoder.encode
 
-typealias DialogOpener = ((dialogFragment: DialogFragment, tag: String) -> Unit)
-
 class QrCodeFragment : DialogFragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     return inflater.inflate(R.layout.fragment_qr_code, container, false)
@@ -35,9 +33,10 @@ class QrCodeFragment : DialogFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val arguments = arguments
-    if (arguments != null && arguments.containsKey(EXTRA_TEXT)) {
-      setQrCodeText(arguments.getString(EXTRA_TEXT)!!)
+    arguments?.let { args ->
+      if (args.containsKey(EXTRA_TEXT)) {
+        setQrCodeText(args.getString(EXTRA_TEXT) ?: "")
+      }
     }
   }
 
@@ -54,6 +53,12 @@ class QrCodeFragment : DialogFragment() {
   companion object {
     const val TAG = "QrCodeFragment"
 
-    const val EXTRA_TEXT = "text"
+    private const val EXTRA_TEXT = "text"
+
+    fun withText(text: String) = QrCodeFragment().apply {
+      arguments = Bundle().apply {
+        putString(EXTRA_TEXT, text)
+      }
+    }
   }
 }
