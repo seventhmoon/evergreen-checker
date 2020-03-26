@@ -18,13 +18,13 @@ import android.content.Context
 import android.content.Context.WIFI_SERVICE
 import android.graphics.drawable.Drawable
 import android.net.wifi.WifiManager
-import android.os.Bundle
 import android.text.format.Formatter.formatIpAddress
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.extensions.toTargetSize
 import app.evergreen.services.SystemProp
+import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 import app.evergreen.ui.QrCodeFragment
@@ -45,11 +45,11 @@ class AdbConfig(private val context: Context, private val dialogOpener: DialogOp
     val adbPort = SystemProp.read("service.adb.tcp.port")
     val adbEndpoint = "$ipAddr:$adbPort"
 
-    dialogOpener.invoke(QrCodeFragment().apply {
-      arguments = Bundle().apply {
-        putString(QrCodeFragment.EXTRA_TEXT,
-          this@AdbConfig.context.getString(R.string.adb_endpoint_info, adbEndpoint))
-      }
-    }, QrCodeFragment.TAG)
+    dialogOpener.invoke(
+      BigTextFragment.withText(
+        this@AdbConfig.context.getString(R.string.adb_config),
+        this@AdbConfig.context.getString(R.string.adb_endpoint_info, adbEndpoint)
+      ), BigTextFragment.TAG
+    )
   }
 }
