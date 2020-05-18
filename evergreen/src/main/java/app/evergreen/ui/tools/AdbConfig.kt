@@ -27,7 +27,6 @@ import app.evergreen.services.SystemProp
 import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
-import app.evergreen.ui.QrCodeFragment
 
 class AdbConfig(private val context: Context, private val dialogOpener: DialogOpener) : Tool {
   override val titleText: String

@@ -57,9 +57,9 @@ class EvergreenFragment : BrowseSupportFragment() {
       rowsAdapter.add(
         ListRow(
           HeaderItem(requireContext().getString(R.string.tools)),
-          ToolsObjectAdapter(requireContext(), { dialogFragment, tag ->
+          ToolsObjectAdapter(requireContext()) { dialogFragment, tag ->
             dialogFragment.show(fragmentManager, tag)
-          })
+          }
         )
       )
     })
