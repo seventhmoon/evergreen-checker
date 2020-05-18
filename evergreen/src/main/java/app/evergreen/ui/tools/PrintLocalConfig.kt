@@ -47,7 +47,7 @@ class PrintLocalConfig(private val context: Context) : Tool {
   }
 
   override val titleText: String
-    get() = context.getString(R.string.print_local_config)
+    get() = context.getString(R.string.print_app_versions)
 
   override val mainImage: Drawable
     get() = context.getDrawable(R.drawable.code_json)!!

@@ -22,7 +22,7 @@
   <string name="remote_firmware">Remote Firmware</string>
 
   <string name="tools">Tools</string>
-  <string name="print_local_config">Print Local Config</string>
+  <string name="print_app_versions">Print App Versions</string>
 
   <string name="update_required">Update Required</string>
   <string name="no_update_required">No Update Required</string>
