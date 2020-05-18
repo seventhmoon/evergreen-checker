@@ -24,6 +24,7 @@ import app.evergreen.R
 import app.evergreen.config.EvergreenConfig
 import app.evergreen.config.MoshiAdapters
 import app.evergreen.extensions.md5
+import app.evergreen.extensions.toast
 import app.evergreen.services.HttpClient.httpGet
 import app.evergreen.services.log
 import com.squareup.moshi.JsonEncodingException
@@ -55,12 +56,9 @@ object Repo {
 
         val jsonString = httpGet(configUrl)
         if (jsonString == null) {
-          errorsLiveData.postValue(
-            FetchError(
-              deviceUniqueId,
-              context.getString(R.string.device_not_supported, deviceUniqueId)
-            )
-          )
+          Log.i(TAG, deviceUniqueId)
+          // Don’t raise a FetchError, since Evergreen’s Tools can be used successfully even on devices
+          // for which we don’t have an active app config available.
           return@withContext
         }
 

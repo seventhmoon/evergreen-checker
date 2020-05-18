@@ -45,22 +45,22 @@ class EvergreenFragment : BrowseSupportFragment() {
   override fun onStart() {
     super.onStart()
 
+    rowsAdapter.add(0,  // Add as first row.
+      ListRow(
+        HeaderItem(requireContext().getString(R.string.tools)),
+        ToolsObjectAdapter(requireContext()) { dialogFragment, tag ->
+          dialogFragment.show(fragmentManager, tag)
+        }
+      )
+    )
+
     Repo.evergreenConfig.observe(this, Observer<EvergreenConfig> { evergreenConfig ->
-      rowsAdapter.clear()
-      rowsAdapter.add(
+      rowsAdapter.add(1,  // Add as second row, overwriting any previously-set row.
         ListRow(
           HeaderItem(requireContext().getString(R.string.updates)),
           UpdatesObjectAdapter(evergreenConfig) { dialogFragment, tag ->
             dialogFragment.show(fragmentManager, tag)
           })
-      )
-      rowsAdapter.add(
-        ListRow(
-          HeaderItem(requireContext().getString(R.string.tools)),
-          ToolsObjectAdapter(requireContext()) { dialogFragment, tag ->
-            dialogFragment.show(fragmentManager, tag)
-          }
-        )
       )
     })
 
