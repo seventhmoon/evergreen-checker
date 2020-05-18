@@ -25,7 +25,7 @@ import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
 class LaunchPlayStore(private val context: Context) : Tool {
   override val titleText: String
-    get() = context.getString(R.string.play_store)
+    get() = context.getString(R.string.launch_play_store)
 
   override val mainImage: Drawable
     get() = context.getDrawable(R.drawable.google_play)!!
