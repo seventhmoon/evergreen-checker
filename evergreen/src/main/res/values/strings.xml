@@ -44,4 +44,6 @@
   <string name="play_store">Play Store</string>
   <string name="adb_config">ADB Config</string>
   <string name="adb_endpoint_info">adb -s %1$s<xliff:g id="newline">\n</xliff:g>scrcpy -s %1$s</string>
+
+  <string name="device_config">Device Config</string>
 </resources>
