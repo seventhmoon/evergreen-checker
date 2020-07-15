@@ -18,12 +18,14 @@ import android.app.ActivityManager
 import android.content.ComponentName
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.os.Build.*
 import android.service.voice.VoiceInteractionService
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.extensions.humanReadableByteCountSI
 import app.evergreen.extensions.toTargetSize
+import app.evergreen.services.log
 import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
@@ -60,17 +62,21 @@ class DeviceConfig(private val context: Context, private val dialogOpener: Dialo
 
     val isConfigOK = !isLowRamDevice || isKatnissActiveVoiceInteractionService
 
+    val deviceInfo = "Low RAM flag: $isLowRamDevice / " +
+        "Katniss is VoiceInteractionService: $isKatnissActiveVoiceInteractionService " +
+        "→ ${if (isConfigOK) "OK" else "Not OK"}" +
+        "\n" +
+        "totalMem: ${memInfo.totalMem.humanReadableByteCountSI()} / " +
+        "availMem: ${memInfo.availMem.humanReadableByteCountSI()}" +
+        "\n" +
+        "BRAND:$BRAND / DEVICE:$DEVICE / PRODUCT:$PRODUCT / MODEL:$MODEL"
+
     dialogOpener.invoke(
-      BigTextFragment.withText(
-        context.getString(R.string.device_config),
-        """isLowRamDevice: $isLowRamDevice
-            |isKatnissActiveVoiceInteractionService: $isKatnissActiveVoiceInteractionService
-            |isConfigOK: $isConfigOK
-            |
-            |totalMem: ${memInfo.totalMem.humanReadableByteCountSI()}
-            |availMem: ${memInfo.availMem.humanReadableByteCountSI()}"""
-          .trimMargin()
-      ), BigTextFragment.TAG
+      BigTextFragment.withText(context.getString(R.string.device_config), deviceInfo), BigTextFragment.TAG
     )
+  }
+
+  companion object {
+    private const val TAG = "DeviceConfig"
   }
 }
