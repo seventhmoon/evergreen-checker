@@ -45,7 +45,7 @@ class EvergreenFragment : BrowseSupportFragment() {
   override fun onStart() {
     super.onStart()
 
-    rowsAdapter.add(0,  // Add as first row.
+    rowsAdapter.add(
       ListRow(
         HeaderItem(requireContext().getString(R.string.tools)),
         ToolsObjectAdapter(requireContext()) { dialogFragment, tag ->
@@ -55,7 +55,14 @@ class EvergreenFragment : BrowseSupportFragment() {
     )
 
     Repo.evergreenConfig.observe(this, Observer<EvergreenConfig> { evergreenConfig ->
-      rowsAdapter.add(1,  // Add as second row, overwriting any previously-set row.
+      val existingUpdatesRow =
+        rowsAdapter.unmodifiableList<ListRow>().indexOfFirst { it.adapter is UpdatesObjectAdapter }
+      if (existingUpdatesRow != -1) {
+        rowsAdapter.removeItems(existingUpdatesRow, 1)
+      }
+
+      // Adding to a specific row index does not seem to work correctly.
+      rowsAdapter.add(
         ListRow(
           HeaderItem(requireContext().getString(R.string.updates)),
           UpdatesObjectAdapter(evergreenConfig) { dialogFragment, tag ->
