@@ -70,6 +70,7 @@ class DeviceConfig(private val context: Context, private val dialogOpener: Dialo
         "availMem: ${memInfo.availMem.humanReadableByteCountSI()}" +
         "\n" +
         "BRAND:$BRAND / DEVICE:$DEVICE / PRODUCT:$PRODUCT / MODEL:$MODEL"
+    log(TAG, deviceInfo)
 
     dialogOpener.invoke(
       BigTextFragment.withText(context.getString(R.string.device_config), deviceInfo), BigTextFragment.TAG
