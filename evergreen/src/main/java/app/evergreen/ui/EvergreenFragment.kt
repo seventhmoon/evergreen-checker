@@ -61,11 +61,8 @@ class EvergreenFragment : BrowseSupportFragment() {
 
       // Adding to a specific row index does not seem to work correctly.
       rowsAdapter.add(
-        ListRow(
-          HeaderItem(requireContext().getString(R.string.updates)),
-          UpdatesObjectAdapter(evergreenConfig) { dialogFragment, tag ->
-            dialogFragment.show(fragmentManager, tag)
-          })
+        ListRow(HeaderItem(requireContext().getString(R.string.updates)),
+          UpdatesObjectAdapter(evergreenConfig) { dialogFragment, tag -> dialogFragment.show(fragmentManager, tag) })
       )
     })
 
