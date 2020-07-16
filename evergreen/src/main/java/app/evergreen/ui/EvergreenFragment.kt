@@ -45,14 +45,12 @@ class EvergreenFragment : BrowseSupportFragment() {
   override fun onStart() {
     super.onStart()
 
-    rowsAdapter.add(
-      ListRow(
-        HeaderItem(requireContext().getString(R.string.tools)),
-        ToolsObjectAdapter(requireContext()) { dialogFragment, tag ->
-          dialogFragment.show(fragmentManager, tag)
-        }
-      )
-    )
+    val toolsRowExists = rowsAdapter.unmodifiableList<ListRow>().any { it.adapter is ToolsObjectAdapter }
+    if (!toolsRowExists) {
+      rowsAdapter.add(ListRow(HeaderItem(requireContext().getString(R.string.tools)),
+        ToolsObjectAdapter(requireContext()) { dialogFragment, tag -> dialogFragment.show(fragmentManager, tag) }
+      ))
+    }
 
     Repo.evergreenConfig.observe(this, Observer<EvergreenConfig> { evergreenConfig ->
       val existingUpdatesRow =
