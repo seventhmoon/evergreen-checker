@@ -29,6 +29,7 @@
   <string name="newer_version_installed">Newer Version Installed</string>
   <string name="app_not_installed">App Not Installed</string>
   <string name="configuration_error">Configuration Error</string>
+  <string name="app_details">App Details</string>
 
   <string name="check_for_update">Check For Update</string>
   <string name="cancel">Cancel</string>

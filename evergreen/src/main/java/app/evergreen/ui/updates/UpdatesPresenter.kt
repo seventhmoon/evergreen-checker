@@ -15,6 +15,8 @@
 package app.evergreen.ui.updates
 
 import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.drawable.toBitmap
@@ -31,6 +33,7 @@ import app.evergreen.config.EvergreenConfig
 import app.evergreen.config.Kind.*
 import app.evergreen.config.Updatable
 import app.evergreen.extensions.color
+import app.evergreen.extensions.safeStartActivity
 import app.evergreen.extensions.toTargetSize
 import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
@@ -109,7 +112,16 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
               updatableViewModel.onUpdate()
               dialog.dismiss()
             }
-            setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
+            if (updatable.kind == APK) {
+              setNegativeButton(R.string.app_details) { dialog, _ ->
+                context.safeStartActivity(
+                  Intent("android.settings.APPLICATION_DETAILS_SETTINGS", Uri.parse("package:${updatable.id}"))
+                )
+                dialog.dismiss()
+              }
+            } else {
+              setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
+            }
             setNeutralButton(R.string.qr_code) { dialog, _ ->
               dialogOpener.invoke(QrCodeFragment.withText(updatableViewModel.dialogMessage), QrCodeFragment.TAG)
               dialog.dismiss()
