@@ -76,9 +76,8 @@ object Repo {
 
   private const val TAG = "Repo"
 
-  fun getConfigUrl(context: Context, deviceUniqueId: String): String {
-    return context.getString(R.string.config_url, deviceUniqueId.md5())
-  }
+  fun getConfigUrl(context: Context, deviceUniqueId: String) =
+    context.getString(R.string.device_config_url, deviceUniqueId.md5())
 }
 
 data class FetchError(val deviceUniqueId: String, val message: String)
