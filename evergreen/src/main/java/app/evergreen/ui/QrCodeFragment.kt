@@ -23,7 +23,7 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import app.evergreen.R
 import app.evergreen.services.log
-import coil.api.load
+import coil.load
 import java.net.URLEncoder.encode
 
 class QrCodeFragment : DialogFragment() {

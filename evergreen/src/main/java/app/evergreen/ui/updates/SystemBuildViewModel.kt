@@ -19,9 +19,8 @@ import android.content.Intent
 import android.os.Build
 import app.evergreen.R
 import app.evergreen.config.Updatable
+import app.evergreen.extensions.drawable
 import app.evergreen.extensions.safeStartActivity
-import coil.Coil
-import coil.api.get
 
 class SystemBuildViewModel(context: Context, updatable: Updatable) :
   AbstractUpdatableViewModel(context, updatable) {
@@ -31,7 +30,7 @@ class SystemBuildViewModel(context: Context, updatable: Updatable) :
 
   override val titleText = context.getString(R.string.system_build)
 
-  override suspend fun getIcon() = Coil.get(R.drawable.cellphone_arrow_down)
+  override suspend fun getIcon() = context.drawable(R.drawable.cellphone_arrow_down)!!
 
   override fun onUpdate() =
     context.safeStartActivity(Intent("android.settings.SYSTEM_UPDATE_SETTINGS"))

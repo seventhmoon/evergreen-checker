@@ -17,11 +17,10 @@ package app.evergreen.ui.updates
 import android.content.Context
 import app.evergreen.R
 import app.evergreen.config.Updatable
-import coil.Coil
-import coil.api.get
+import app.evergreen.extensions.drawable
 
 class RemoteFirmwareViewModel(context: Context, updatable: Updatable) : AbstractUpdatableViewModel(context, updatable) {
   override val titleText = context.getString(R.string.remote_firmware)
 
-  override suspend fun getIcon() = Coil.get(R.drawable.remote)
+  override suspend fun getIcon() = context.drawable(R.drawable.remote)!!
 }

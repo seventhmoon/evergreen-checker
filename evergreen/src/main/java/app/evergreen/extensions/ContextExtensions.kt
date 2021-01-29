@@ -17,12 +17,15 @@ package app.evergreen.extensions
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import app.evergreen.BuildConfig
 import app.evergreen.R
 import kotlinx.coroutines.CoroutineScope
@@ -60,3 +63,6 @@ fun Context.safeStartActivity(intent: Intent): Boolean {
 }
 
 fun Context.color(@ColorRes color: Int) = ContextCompat.getColor(this, color)
+
+fun Context.drawable(@DrawableRes drawableRes: Int): Drawable? =
+  ResourcesCompat.getDrawable(resources, drawableRes, null)

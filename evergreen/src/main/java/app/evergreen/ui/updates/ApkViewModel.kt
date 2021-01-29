@@ -16,13 +16,13 @@ package app.evergreen.ui.updates
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import androidx.core.content.pm.PackageInfoCompat
 import app.evergreen.R
 import app.evergreen.config.Updatable
+import app.evergreen.extensions.drawable
 import app.evergreen.services.Opener.openPlayStore
 import app.evergreen.services.log
-import coil.Coil
-import coil.api.get
 
 class ApkViewModel(context: Context, updatable: Updatable) :
   AbstractUpdatableViewModel(context, updatable) {
@@ -63,11 +63,11 @@ class ApkViewModel(context: Context, updatable: Updatable) :
       updatable.id ?: context.getString(R.string.unknown)
     }
 
-  override suspend fun getIcon() = try {
+  override suspend fun getIcon(): Drawable = try {
     context.packageManager.getApplicationIcon(updatable.id!!)
   } catch (e: PackageManager.NameNotFoundException) {
     log(TAG, e)
-    Coil.get(R.drawable.apps)
+    context.drawable(R.drawable.apps)!!
   }
 
   override fun onUpdate() = openPlayStore(context, updatable.id!!)
