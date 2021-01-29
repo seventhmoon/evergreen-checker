@@ -30,11 +30,12 @@ import app.evergreen.data.Repo.deviceUniqueId
 import app.evergreen.data.Repo.getConfigUrl
 import app.evergreen.extensions.drawable
 import app.evergreen.extensions.toTargetSize
-import app.evergreen.extensions.toast
 import app.evergreen.services.log
+import app.evergreen.ui.BigTextFragment
+import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
-class PrintLocalConfig(private val context: Context) : Tool {
+class PrintLocalConfig(private val context: Context, private val dialogOpener: DialogOpener) : Tool {
 
   private fun getInstalledVersion(updatable: Updatable): String? = when (updatable.kind) {
     Kind.APK -> {
@@ -69,7 +70,11 @@ class PrintLocalConfig(private val context: Context) : Tool {
       val json = MoshiAdapters.updatablesAdapter.toJson(evergreenConfig)
       log(TAG, "URL: ${getConfigUrl(context, deviceUniqueId)}")
       log(TAG, json)
-      context.toast(R.string.completed_successfully)
+      dialogOpener.invoke(
+        BigTextFragment.withText(
+          context.getString(R.string.device_config), evergreenConfig.toCompactString()
+        ), BigTextFragment.TAG
+      )
     }
   }
 

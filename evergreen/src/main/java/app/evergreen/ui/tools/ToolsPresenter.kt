@@ -36,7 +36,7 @@ class ToolsObjectAdapter(private val context: Context, private val dialogOpener:
     0 -> DeviceConfig(context, dialogOpener)
     1 -> AdbConfig(context, dialogOpener)
     2 -> LaunchPlayStore(context)
-    3 -> PrintLocalConfig(context)
+    3 -> PrintLocalConfig(context, dialogOpener)
     else -> throw UnsupportedOperationException()
   }
 }
