@@ -21,7 +21,9 @@ import java.util.*
 @JsonClass(generateAdapter = true)
 data class EvergreenConfig(
   val updatables: List<Updatable>
-)
+) {
+  fun toCompactString() = updatables.joinToString(separator = "\n") { "${it.id ?: it.kind}: ${it.latestProd?.versionName}" }
+}
 
 @JsonClass(generateAdapter = true)
 data class Updatable(
