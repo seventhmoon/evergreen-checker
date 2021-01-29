@@ -24,7 +24,6 @@ import app.evergreen.R
 import app.evergreen.config.EvergreenConfig
 import app.evergreen.config.MoshiAdapters
 import app.evergreen.extensions.md5
-import app.evergreen.extensions.toast
 import app.evergreen.services.HttpClient.httpGet
 import app.evergreen.services.log
 import com.squareup.moshi.JsonEncodingException

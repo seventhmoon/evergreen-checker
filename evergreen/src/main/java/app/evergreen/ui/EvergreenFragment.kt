@@ -23,9 +23,7 @@ import androidx.leanback.widget.ArrayObjectAdapter
 import androidx.leanback.widget.HeaderItem
 import androidx.leanback.widget.ListRow
 import androidx.leanback.widget.ListRowPresenter
-import androidx.lifecycle.Observer
 import app.evergreen.R
-import app.evergreen.config.EvergreenConfig
 import app.evergreen.data.Repo
 import app.evergreen.extensions.color
 import app.evergreen.extensions.drawable
@@ -55,7 +53,7 @@ class EvergreenFragment : BrowseSupportFragment() {
       ))
     }
 
-    Repo.evergreenConfig.observe(this, Observer<EvergreenConfig> { evergreenConfig ->
+    Repo.evergreenConfig.observe(this, { evergreenConfig ->
       val existingUpdatesRow =
         rowsAdapter.unmodifiableList<ListRow>().indexOfFirst { it.adapter is UpdatesObjectAdapter }
       if (existingUpdatesRow != -1) {
@@ -71,7 +69,7 @@ class EvergreenFragment : BrowseSupportFragment() {
       )
     })
 
-    Repo.errors.observe(this, Observer { fetchError ->
+    Repo.errors.observe(this, { fetchError ->
       requireFragmentManager().beginTransaction()
         .replace(android.R.id.content, ErrorSupportFragment().apply {
           val context = this@EvergreenFragment.requireContext()
