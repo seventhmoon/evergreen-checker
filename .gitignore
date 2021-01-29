@@ -1,8 +1,12 @@
 *.iml
+*.keystore
 .DS_Store
 .gradle
-.idea/*
-build
-captures
-keys
+.idea
+.jekyll-metadata
+build/
+docs/_site
+keystore.properties
 local.properties
+service-account-keys.json
+vendor
