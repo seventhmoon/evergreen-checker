@@ -97,6 +97,6 @@ dependencies {
   implementation("androidx.work:work-runtime:2.4.0")
 
   // Third Party Libraries
-  implementation("com.squareup.okhttp3:okhttp:4.2.2")
+  implementation("com.squareup.okhttp3:okhttp:4.9.0")
   implementation("io.coil-kt:coil:0.9.5")
 }
