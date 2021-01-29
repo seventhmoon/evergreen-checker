@@ -26,6 +26,8 @@ import app.evergreen.config.MoshiAdapters
 import app.evergreen.config.Updatable
 import app.evergreen.config.Version
 import app.evergreen.data.Repo
+import app.evergreen.data.Repo.deviceUniqueId
+import app.evergreen.data.Repo.getConfigUrl
 import app.evergreen.extensions.drawable
 import app.evergreen.extensions.toTargetSize
 import app.evergreen.extensions.toast
@@ -65,6 +67,7 @@ class PrintLocalConfig(private val context: Context) : Tool {
       }
 
       val json = MoshiAdapters.updatablesAdapter.toJson(evergreenConfig)
+      log(TAG, "URL: ${getConfigUrl(context, deviceUniqueId)}")
       log(TAG, json)
       context.toast(R.string.completed_successfully)
     }
