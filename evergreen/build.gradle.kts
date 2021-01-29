@@ -91,10 +91,10 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0")
 
   // AndroidX
-  implementation("androidx.core:core-ktx:1.2.0")
-  implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+  implementation("androidx.core:core-ktx:1.3.2")
+  implementation("androidx.constraintlayout:constraintlayout:2.0.4")
   implementation("androidx.leanback:leanback:1.0.0")
-  implementation("androidx.work:work-runtime:2.3.1")
+  implementation("androidx.work:work-runtime:2.4.0")
 
   // Third Party Libraries
   implementation("com.squareup.okhttp3:okhttp:4.2.2")

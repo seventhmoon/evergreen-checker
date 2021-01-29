@@ -48,7 +48,9 @@ class EvergreenFragment : BrowseSupportFragment() {
     val toolsRowExists = rowsAdapter.unmodifiableList<ListRow>().any { it.adapter is ToolsObjectAdapter }
     if (!toolsRowExists) {
       rowsAdapter.add(ListRow(HeaderItem(requireContext().getString(R.string.tools)),
-        ToolsObjectAdapter(requireContext()) { dialogFragment, tag -> dialogFragment.show(fragmentManager, tag) }
+        ToolsObjectAdapter(requireContext()) { dialogFragment, tag ->
+          dialogFragment.show(requireFragmentManager(), tag)
+        }
       ))
     }
 
@@ -62,7 +64,9 @@ class EvergreenFragment : BrowseSupportFragment() {
       // Adding to a specific row index does not seem to work correctly.
       rowsAdapter.add(
         ListRow(HeaderItem(requireContext().getString(R.string.updates)),
-          UpdatesObjectAdapter(evergreenConfig) { dialogFragment, tag -> dialogFragment.show(fragmentManager, tag) })
+          UpdatesObjectAdapter(evergreenConfig) { dialogFragment, tag ->
+            dialogFragment.show(requireFragmentManager(), tag)
+          })
       )
     })
 
