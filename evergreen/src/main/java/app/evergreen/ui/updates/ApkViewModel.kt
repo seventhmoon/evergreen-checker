@@ -21,7 +21,7 @@ import androidx.core.content.pm.PackageInfoCompat
 import app.evergreen.R
 import app.evergreen.config.Updatable
 import app.evergreen.extensions.drawable
-import app.evergreen.services.Opener.openPlayStore
+import app.evergreen.services.AppServices.opener
 import app.evergreen.services.log
 
 class ApkViewModel(context: Context, updatable: Updatable) :
@@ -70,7 +70,7 @@ class ApkViewModel(context: Context, updatable: Updatable) :
     context.drawable(R.drawable.apps)!!
   }
 
-  override fun onUpdate() = openPlayStore(context, updatable.id!!)
+  override fun onUpdate() = opener.openPlayStore(updatable.id!!)
 
   companion object {
     private const val TAG = "ApkPresenter"

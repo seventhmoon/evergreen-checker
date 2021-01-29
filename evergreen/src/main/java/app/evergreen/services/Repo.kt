@@ -24,7 +24,7 @@ import app.evergreen.R
 import app.evergreen.config.EvergreenConfig
 import app.evergreen.config.MoshiAdapters
 import app.evergreen.extensions.md5
-import app.evergreen.services.HttpClient.httpGet
+import app.evergreen.services.AppServices.httpClient
 import app.evergreen.services.log
 import com.squareup.moshi.JsonEncodingException
 import kotlinx.coroutines.CoroutineScope
@@ -32,7 +32,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-object Repo {
+class Repo(private val context: Context) {
   private val evergreenConfigLiveData: MutableLiveData<EvergreenConfig> = MutableLiveData()
 
   private val errorsLiveData: MutableLiveData<FetchError> = MutableLiveData()
@@ -47,18 +47,18 @@ object Repo {
   val errors: LiveData<FetchError>
     get() = errorsLiveData
 
-  fun refreshFromServer(context: Context) {
+  fun refreshFromServer() {
     log(TAG, "refreshFromServer")
     CoroutineScope(Dispatchers.Main).launch {
       withContext(Dispatchers.IO) {
-        val configUrl = getConfigUrl(context, deviceUniqueId)
+        val configUrl = getConfigUrl(deviceUniqueId)
         Log.e(TAG, "| $configUrl | $deviceUniqueId |")
-        var jsonString = httpGet(configUrl)
+        var jsonString = httpClient.httpGet(configUrl)
         if (jsonString == null) {
           Log.i(TAG, deviceUniqueId)
           // If we don’t have a device-specific config for this device, then use a default config. It’ll include
           // the list of apps of interest, but without specific pinned versions listed.
-          jsonString = httpGet(context.getString(R.string.default_config_url))
+          jsonString = httpClient.httpGet(context.getString(R.string.default_config_url))
         }
 
         // If the default.json could not be located, then still don’t raise a FetchError, since Evergreen’s Tools
@@ -81,10 +81,12 @@ object Repo {
     }
   }
 
-  private const val TAG = "Repo"
-
-  fun getConfigUrl(context: Context, deviceUniqueId: String) =
+  fun getConfigUrl(deviceUniqueId: String) =
     context.getString(R.string.device_config_url, deviceUniqueId.md5())
+
+  companion object {
+    private const val TAG = "Repo"
+  }
 }
 
 data class FetchError(val deviceUniqueId: String, val message: String)

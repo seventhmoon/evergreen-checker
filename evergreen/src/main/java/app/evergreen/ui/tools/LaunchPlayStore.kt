@@ -21,7 +21,7 @@ import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.extensions.drawable
 import app.evergreen.extensions.toTargetSize
-import app.evergreen.services.Opener
+import app.evergreen.services.AppServices.opener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
 class LaunchPlayStore(private val context: Context) : Tool {
@@ -35,6 +35,6 @@ class LaunchPlayStore(private val context: Context) : Tool {
       .toDrawable(context.resources)
 
   override fun doAction() {
-    Opener.openPlayStore(context, context.packageName)
+    opener.openPlayStore(context.packageName)
   }
 }

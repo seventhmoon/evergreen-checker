@@ -19,8 +19,8 @@ import android.content.Intent
 import android.net.Uri
 import app.evergreen.extensions.safeStartActivity
 
-object Opener {
-  fun openPlayStore(context: Context, packageId: String): Boolean =
+class Opener(private val context: Context) {
+  fun openPlayStore(packageId: String): Boolean =
     context.safeStartActivity(
       Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageId"))
         .addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)

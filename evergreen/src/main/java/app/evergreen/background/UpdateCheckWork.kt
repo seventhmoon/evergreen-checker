@@ -17,6 +17,7 @@ package app.evergreen.background
 import android.content.Context
 import androidx.work.*
 import app.evergreen.data.Repo
+import app.evergreen.services.AppServices.repo
 import app.evergreen.services.log
 import java.util.concurrent.TimeUnit
 
@@ -27,7 +28,7 @@ class UpdateCheckWork(
   Worker(context, workerParams) {
 
   override fun doWork(): Result {
-    Repo.refreshFromServer(context)
+    repo.refreshFromServer()
     return Result.success()
   }
 }

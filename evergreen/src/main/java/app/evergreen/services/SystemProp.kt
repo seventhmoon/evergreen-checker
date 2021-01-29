@@ -18,13 +18,15 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 
 /** Reads system properties by name. */
-object SystemProp {
-  private const val GETPROP_EXECUTABLE_PATH = "/system/bin/getprop"
-
+class SystemProp {
   fun read(propName: String): String {
     val process = ProcessBuilder().command(GETPROP_EXECUTABLE_PATH, propName).redirectErrorStream(true).start()
     BufferedReader(InputStreamReader(process.inputStream)).use {
       return it.readLine() ?: ""
     }
+  }
+
+  companion object {
+    private const val GETPROP_EXECUTABLE_PATH = "/system/bin/getprop"
   }
 }

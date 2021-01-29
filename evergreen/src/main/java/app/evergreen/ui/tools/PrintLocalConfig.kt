@@ -25,11 +25,9 @@ import app.evergreen.config.Kind
 import app.evergreen.config.MoshiAdapters
 import app.evergreen.config.Updatable
 import app.evergreen.config.Version
-import app.evergreen.data.Repo
-import app.evergreen.data.Repo.deviceUniqueId
-import app.evergreen.data.Repo.getConfigUrl
 import app.evergreen.extensions.drawable
 import app.evergreen.extensions.toTargetSize
+import app.evergreen.services.AppServices.repo
 import app.evergreen.services.log
 import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
@@ -60,7 +58,7 @@ class PrintLocalConfig(private val context: Context, private val dialogOpener: D
       .toDrawable(context.resources)
 
   override fun doAction() {
-    Repo.evergreenConfig.observeForever { evergreenConfig ->
+    repo.evergreenConfig.observeForever { evergreenConfig ->
       evergreenConfig.updatables.forEach { updatable ->
         getInstalledVersion(updatable)?.let { installedVersion ->
           updatable.latestProd = Version(installedVersion)
@@ -68,7 +66,7 @@ class PrintLocalConfig(private val context: Context, private val dialogOpener: D
       }
 
       val json = MoshiAdapters.updatablesAdapter.toJson(evergreenConfig)
-      log(TAG, "URL: ${getConfigUrl(context, deviceUniqueId)}")
+      log(TAG, "URL: ${repo.getConfigUrl(repo.deviceUniqueId)}")
       log(TAG, json)
       dialogOpener.invoke(
         BigTextFragment.withText(

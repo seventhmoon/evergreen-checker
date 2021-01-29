@@ -17,12 +17,12 @@ package app.evergreen.ui
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import app.evergreen.R
-import app.evergreen.data.Repo
+import app.evergreen.services.AppServices.repo
 
 class EvergreenActivity : FragmentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_evergreen)
-    Repo.refreshFromServer(applicationContext)
+    repo.refreshFromServer()
   }
 }

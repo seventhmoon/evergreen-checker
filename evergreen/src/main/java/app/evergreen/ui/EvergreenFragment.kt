@@ -24,9 +24,9 @@ import androidx.leanback.widget.HeaderItem
 import androidx.leanback.widget.ListRow
 import androidx.leanback.widget.ListRowPresenter
 import app.evergreen.R
-import app.evergreen.data.Repo
 import app.evergreen.extensions.color
 import app.evergreen.extensions.drawable
+import app.evergreen.services.AppServices.repo
 import app.evergreen.ui.tools.ToolsObjectAdapter
 import app.evergreen.ui.updates.UpdatesObjectAdapter
 
@@ -53,7 +53,7 @@ class EvergreenFragment : BrowseSupportFragment() {
       ))
     }
 
-    Repo.evergreenConfig.observe(this, { evergreenConfig ->
+    repo.evergreenConfig.observe(this, { evergreenConfig ->
       val existingUpdatesRow =
         rowsAdapter.unmodifiableList<ListRow>().indexOfFirst { it.adapter is UpdatesObjectAdapter }
       if (existingUpdatesRow != -1) {
@@ -69,7 +69,7 @@ class EvergreenFragment : BrowseSupportFragment() {
       )
     })
 
-    Repo.errors.observe(this, { fetchError ->
+    repo.errors.observe(this, { fetchError ->
       requireFragmentManager().beginTransaction()
         .replace(android.R.id.content, ErrorSupportFragment().apply {
           val context = this@EvergreenFragment.requireContext()
@@ -78,7 +78,7 @@ class EvergreenFragment : BrowseSupportFragment() {
           buttonText = context.getString(R.string.qr_code)
           buttonClickListener = View.OnClickListener {
             QrCodeFragment.withText(
-              fetchError.deviceUniqueId + "\n" + Repo.getConfigUrl(context, fetchError.deviceUniqueId)
+              fetchError.deviceUniqueId + "\n" + repo.getConfigUrl(fetchError.deviceUniqueId)
             ).show(this@EvergreenFragment.requireFragmentManager(), QrCodeFragment.TAG)
           }
         })

@@ -24,7 +24,7 @@ import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.extensions.drawable
 import app.evergreen.extensions.toTargetSize
-import app.evergreen.services.SystemProp
+import app.evergreen.services.AppServices.systemProp
 import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
@@ -42,7 +42,7 @@ class AdbConfig(private val context: Context, private val dialogOpener: DialogOp
   override fun doAction() {
     val wifiManager = context.applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
     @Suppress("DEPRECATION") val ipAddr = formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-    val adbPort = SystemProp.read("service.adb.tcp.port")
+    val adbPort = systemProp.read("service.adb.tcp.port")
     val adbEndpoint = "$ipAddr:$adbPort"
 
     dialogOpener.invoke(

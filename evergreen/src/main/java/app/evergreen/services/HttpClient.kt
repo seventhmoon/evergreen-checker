@@ -21,7 +21,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
 
-object HttpClient {
+class HttpClient {
   val okHttpClient: OkHttpClient by lazy {
     OkHttpClient.Builder()
       .followRedirects(true)
@@ -49,5 +49,7 @@ object HttpClient {
     }
   }
 
-  private const val TAG = "HttpClient"
+  companion object {
+    private const val TAG = "HttpClient"
+  }
 }
