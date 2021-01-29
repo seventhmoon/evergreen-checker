@@ -14,4 +14,4 @@
 
 rootProject.name = "Evergreen"
 
-include (":evergreen", ":config")
+include (":evergreen")

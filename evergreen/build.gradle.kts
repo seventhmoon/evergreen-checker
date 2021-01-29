@@ -21,6 +21,7 @@ plugins {
   id("com.android.application")
   id("kotlin-android")
   id("kotlin-android-extensions")
+  kotlin("kapt")
 }
 
 val versionMajor = 0
@@ -84,8 +85,6 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 dependencies {
-  implementation(project(":config"))
-
   // Kotlin.
   implementation(kotlin("stdlib", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION))
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0")
@@ -95,6 +94,11 @@ dependencies {
   implementation("androidx.constraintlayout:constraintlayout:2.0.4")
   implementation("androidx.leanback:leanback:1.0.0")
   implementation("androidx.work:work-runtime:2.4.0")
+
+  // Moshi
+  api("com.squareup.moshi:moshi:1.11.0")
+  api("com.squareup.moshi:moshi-adapters:1.10.0")
+  kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
 
   // Third Party Libraries
   implementation("com.squareup.okhttp3:okhttp:4.9.0")
