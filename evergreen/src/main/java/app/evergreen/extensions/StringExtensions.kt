@@ -14,6 +14,7 @@
 
 package app.evergreen.extensions
 
+import android.net.Uri
 import java.math.BigInteger
 import java.security.MessageDigest
 
@@ -21,3 +22,9 @@ fun String.md5(): String {
   val md = MessageDigest.getInstance("MD5")
   return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
 }
+
+/**
+ * When passing as a Uri, "\n" are not honored, but "<br>" are interpreted as line breaks. This screws with the
+ * Uri.encode(), and all content after "=" is truncated.
+ */
+fun String.encodeForEmail(): String = Uri.encode(replace("=", "%3D"))

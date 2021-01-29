@@ -49,7 +49,7 @@ class PrintLocalConfig(private val context: Context, private val dialogOpener: D
   }
 
   override val titleText: String
-    get() = context.getString(R.string.print_app_versions)
+    get() = context.getString(R.string.app_versions)
 
   override val mainImage: Drawable
     get() = context.drawable(R.drawable.code_json)!!
@@ -70,7 +70,7 @@ class PrintLocalConfig(private val context: Context, private val dialogOpener: D
       log(TAG, json)
       dialogOpener.invoke(
         BigTextFragment.withText(
-          context.getString(R.string.device_config), evergreenConfig.toCompactString()
+          context.getString(R.string.print_app_versions), evergreenConfig.toCompactString()
         ), BigTextFragment.TAG
       )
     }

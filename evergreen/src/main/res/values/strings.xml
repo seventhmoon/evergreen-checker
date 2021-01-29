@@ -22,7 +22,8 @@
   <string name="remote_firmware">Remote Firmware</string>
 
   <string name="tools">Tools</string>
-  <string name="print_app_versions">Print App Versions</string>
+  <string name="app_versions">App Versions</string>
+  <string name="print_app_versions">App Versions (more details in logcat)</string>
 
   <string name="update_required">Update Required</string>
   <string name="no_update_required">No Update Required</string>
@@ -43,8 +44,9 @@
   <string name="error_no_app_to_handle_this_action">No app available to handle this action</string>
   <string name="device_not_supported">This device is not currently supported\n<xliff:g id="device_id">%1$s</xliff:g></string>
   <string name="launch_play_store">Launch Play Store</string>
-  <string name="adb_config">ADB Config</string>
+  <string name="adb_config">ADB Commands</string>
   <string name="adb_endpoint_info">adb -s %1$s<xliff:g id="newline">\n</xliff:g>scrcpy -s %1$s</string>
 
   <string name="device_config">Device Config</string>
+  <string name="request_for_device">Email Request</string>
 </resources>

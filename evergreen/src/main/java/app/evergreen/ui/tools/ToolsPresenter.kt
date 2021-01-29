@@ -30,13 +30,14 @@ class ToolsObjectAdapter(private val context: Context, private val dialogOpener:
     }
   }
 
-  override fun size() = 4
+  override fun size() = 5
 
   override fun get(position: Int): Tool = when (position) {
     0 -> DeviceConfig(context, dialogOpener)
-    1 -> AdbConfig(context, dialogOpener)
-    2 -> LaunchPlayStore(context)
-    3 -> PrintLocalConfig(context, dialogOpener)
+    1 -> PrintLocalConfig(context, dialogOpener)
+    2 -> RequestForDevice(context, dialogOpener)
+    3 -> AdbConfig(context, dialogOpener)
+    4 -> LaunchPlayStore(context)
     else -> throw UnsupportedOperationException()
   }
 }
