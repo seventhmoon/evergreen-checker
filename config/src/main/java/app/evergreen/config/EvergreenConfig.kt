@@ -25,12 +25,12 @@ data class EvergreenConfig(
 
 @JsonClass(generateAdapter = true)
 data class Updatable(
+  /** Nullable because Kind.OTA and Kind.REMOTE_FIRMWARE do not need an ID. */
+  var id: String? = null,
   var kind: Kind = APK,
   var latestAlpha: Version? = null,
   var latestBeta: Version? = null,
   var latestProd: Version? = null,
-  /** Nullable because Kind.OTA and Kind.REMOTE_FIRMWARE do not need an ID. */
-  var id: String? = null
 )
 
 enum class Kind {
