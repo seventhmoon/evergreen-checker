@@ -33,7 +33,7 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3")
 
   // Moshi
-  api("com.squareup.moshi:moshi:1.9.2")
-  api("com.squareup.moshi:moshi-adapters:1.9.2")
-  kapt("com.squareup.moshi:moshi-kotlin-codegen:1.9.2")
+  api("com.squareup.moshi:moshi:1.11.0")
+  api("com.squareup.moshi:moshi-adapters:1.10.0")
+  kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
 }
