@@ -15,14 +15,27 @@
 package app.evergreen.config
 
 import app.evergreen.config.Kind.APK
+import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonClass
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import java.util.*
 
 @JsonClass(generateAdapter = true)
 data class EvergreenConfig(
   val updatables: List<Updatable>
 ) {
-  fun toCompactString() = updatables.joinToString(separator = "\n") { "${it.id ?: it.kind}: ${it.latestProd?.versionName}" }
+  fun toCompactString() =
+    updatables.joinToString(separator = "\n") { "${it.id ?: it.kind}: ${it.latestProd?.versionName}" }
+
+  companion object {
+    fun moshiAdapter(): JsonAdapter<EvergreenConfig> = Moshi.Builder()
+      .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
+      .build()
+      .adapter(EvergreenConfig::class.java)
+      .indent("  ")
+      .lenient()
+  }
 }
 
 @JsonClass(generateAdapter = true)

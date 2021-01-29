@@ -21,8 +21,8 @@ import android.os.Build
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
+import app.evergreen.config.EvergreenConfig
 import app.evergreen.config.Kind
-import app.evergreen.config.MoshiAdapters
 import app.evergreen.config.Updatable
 import app.evergreen.config.Version
 import app.evergreen.extensions.drawable
@@ -65,7 +65,7 @@ class AppVersions(private val context: Context, private val dialogOpener: Dialog
         }
       }
 
-      val json = MoshiAdapters.updatablesAdapter.toJson(evergreenConfig)
+      val json = EvergreenConfig.moshiAdapter().toJson(evergreenConfig)
       log(TAG, "URL: ${repo.getConfigUrl(repo.deviceUniqueId)}")
       log(TAG, json)
       dialogOpener.invoke(

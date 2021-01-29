@@ -22,7 +22,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.evergreen.R
 import app.evergreen.config.EvergreenConfig
-import app.evergreen.config.MoshiAdapters
 import app.evergreen.extensions.md5
 import app.evergreen.services.AppServices.httpClient
 import app.evergreen.services.log
@@ -70,7 +69,7 @@ class Repo(private val context: Context) {
 
         log(TAG, jsonString)
         val json = try {
-          MoshiAdapters.updatablesAdapter.fromJson(jsonString)
+          EvergreenConfig.moshiAdapter().fromJson(jsonString)
         } catch (e: JsonEncodingException) {
           errorsLiveData.postValue(FetchError(deviceUniqueId, e.message ?: context.getString(R.string.unknown)))
           null
