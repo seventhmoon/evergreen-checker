@@ -101,6 +101,8 @@ dependencies {
   // Third Party Libraries
   implementation("com.squareup.okhttp3:okhttp:4.2.2")
   implementation("io.coil-kt:coil:0.9.5")
-  implementation("com.google.firebase:firebase-analytics:17.2.2")
-  implementation("com.google.firebase:firebase-crashlytics:17.0.0-beta01")
+
+  // Google Services
+  implementation("com.google.firebase:firebase-analytics-ktx:18.0.2")
+  implementation("com.google.firebase:firebase-crashlytics-ktx:17.3.1")
 }
