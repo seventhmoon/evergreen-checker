@@ -1,0 +1,37 @@
+{
+  "updatables": [
+    {
+      "kind": "SYSTEM_BUILD"
+    },
+    {
+      "id": "com.google.android.katniss"
+    },
+    {
+      "id": "com.google.android.apps.tv.launcherx"
+    },
+    {
+      "id": "app.evergreen"
+    },
+    {
+      "id": "com.google.android.gms"
+    },
+    {
+      "id": "com.google.android.tv.remote.service"
+    },
+    {
+      "id": "com.google.android.inputmethod.latin"
+    },
+    {
+      "id": "com.android.vending"
+    },
+    {
+      "id": "com.google.android.apps.mediashell"
+    },
+    {
+      "id": "com.google.android.apps.tv.dreamx"
+    },
+    {
+      "id": "com.google.android.youtube.tv"
+    }
+  ]
+}
