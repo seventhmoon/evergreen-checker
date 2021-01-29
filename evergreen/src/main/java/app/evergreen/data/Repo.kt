@@ -53,11 +53,18 @@ object Repo {
       withContext(Dispatchers.IO) {
         val configUrl = getConfigUrl(context, deviceUniqueId)
         Log.e(TAG, "| $configUrl | $deviceUniqueId |")
-        val jsonString = httpGet(configUrl)
+        var jsonString = httpGet(configUrl)
         if (jsonString == null) {
           Log.i(TAG, deviceUniqueId)
-          // Don’t raise a FetchError, since Evergreen’s Tools can be used successfully even on devices
-          // for which we don’t have an active app config available.
+          // If we don’t have a device-specific config for this device, then use a default config. It’ll include
+          // the list of apps of interest, but without specific pinned versions listed.
+          jsonString = httpGet(context.getString(R.string.default_config_url))
+        }
+
+        // If the default.json could not be located, then still don’t raise a FetchError, since Evergreen’s Tools
+        // can be used successfully even without network connectivity.
+        if (jsonString == null) {
+          Log.i(TAG, deviceUniqueId)
           return@withContext
         }
 

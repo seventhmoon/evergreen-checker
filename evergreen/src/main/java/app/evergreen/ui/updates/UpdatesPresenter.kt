@@ -100,8 +100,8 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
             VERSION_OLDER_THAN_LATEST -> R.drawable.cellphone_arrow_down
             VERSION_NEWER_THAN_LATEST -> R.drawable.bomb
             VERSION_IS_LATEST -> R.drawable.check_bold
-            NOT_INSTALLED -> R.drawable.help_circle
-            CONFIGURATION_ERROR -> R.drawable.skull_crossbones
+            NOT_INSTALLED -> R.drawable.skull_crossbones
+            CONFIGURATION_ERROR -> R.drawable.help_circle
           }
         )
 

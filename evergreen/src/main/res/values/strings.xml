@@ -36,7 +36,7 @@
   <string name="ok">OK</string>
   <string name="qr_code">QR Code</string>
 
-  <string name="version_details"><xliff:g id="id">%1$s</xliff:g>\nInstalled: <xliff:g id="installed_version">%2$s</xliff:g>\nAvailable: <xliff:g id="available_version">%3$s</xliff:g></string>
+  <string name="version_details"><xliff:g id="id">%1$s</xliff:g>\n\nInstalled:\n<xliff:g id="installed_version">%2$s</xliff:g>\n\nLatest:\n<xliff:g id="latest_version">%3$s</xliff:g></string>
 
   <string name="completed_successfully">Completed successfully</string>
   <string name="unknown">Unknown</string>

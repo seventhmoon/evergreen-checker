@@ -80,9 +80,10 @@ abstract class AbstractUpdatableViewModel(
 
   open val dialogMessage: String
     get() = context.getString(
-      R.string.version_details, titleText,
+      R.string.version_details,
+      titleText,
       installedVersion + (if (installedVersionCode != null) " ($installedVersionCode)" else ""),
-      availableVersion
+      availableVersion ?: "UNKNOWN"
     )
 
   enum class VersionStatus {
