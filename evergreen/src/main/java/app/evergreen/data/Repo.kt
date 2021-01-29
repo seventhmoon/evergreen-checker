@@ -37,7 +37,7 @@ object Repo {
 
   private val errorsLiveData: MutableLiveData<FetchError> = MutableLiveData()
 
-  val deviceUniqueId = "$BRAND | $DEVICE | $PRODUCT"
+  val deviceUniqueId = MODEL
 
   @get:AnyThread
   val evergreenConfig: LiveData<EvergreenConfig>
