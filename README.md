@@ -15,7 +15,7 @@ multiple places, this app automates the process.
 
 -   Locate the one with the icon below, and install it.
 
-    ![Evergreen Banner](docs/evergreen-banner.png){: width="320" style="border: 1px solid #cdcdcd; border-radius: 16px"}
+    <img src="docs/evergreen-banner.png" alt="Evergreen Banner" width="320" style="border: 1px solid #cdcdcd; border-radius: 16px">
 
 -   Press the Install button.
 
@@ -28,6 +28,10 @@ multiple places, this app automates the process.
 1.  Click on each app that is red, then click: UPDATE.
 
 1.  Repeat for all apps that appear in red.
+
+<video style="width: 100%" controls autoplay>
+  <source src="docs/evergreen.mp4" type="video/mp4">
+</video>
 
 ## For Developers Only
 
