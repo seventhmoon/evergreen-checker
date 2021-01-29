@@ -28,6 +28,7 @@ import app.evergreen.R
 import app.evergreen.config.EvergreenConfig
 import app.evergreen.data.Repo
 import app.evergreen.extensions.color
+import app.evergreen.extensions.drawable
 import app.evergreen.ui.tools.ToolsObjectAdapter
 import app.evergreen.ui.updates.UpdatesObjectAdapter
 
@@ -74,7 +75,7 @@ class EvergreenFragment : BrowseSupportFragment() {
       requireFragmentManager().beginTransaction()
         .replace(android.R.id.content, ErrorSupportFragment().apply {
           val context = this@EvergreenFragment.requireContext()
-          imageDrawable = context.getDrawable(R.drawable.evergreen)
+          imageDrawable = context.drawable(R.drawable.evergreen)
           message = fetchError.message
           buttonText = context.getString(R.string.qr_code)
           buttonClickListener = View.OnClickListener {

@@ -22,6 +22,7 @@ import android.text.format.Formatter.formatIpAddress
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
+import app.evergreen.extensions.drawable
 import app.evergreen.extensions.toTargetSize
 import app.evergreen.services.SystemProp
 import app.evergreen.ui.BigTextFragment
@@ -33,7 +34,7 @@ class AdbConfig(private val context: Context, private val dialogOpener: DialogOp
     get() = context.getString(R.string.adb_config)
 
   override val mainImage: Drawable
-    get() = context.getDrawable(R.drawable.ip_network)!!
+    get() = context.drawable(R.drawable.ip_network)!!
       .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
       .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
       .toDrawable(context.resources)

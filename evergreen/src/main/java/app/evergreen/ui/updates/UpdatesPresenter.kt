@@ -33,6 +33,7 @@ import app.evergreen.config.EvergreenConfig
 import app.evergreen.config.Kind.*
 import app.evergreen.config.Updatable
 import app.evergreen.extensions.color
+import app.evergreen.extensions.drawable
 import app.evergreen.extensions.safeStartActivity
 import app.evergreen.extensions.toTargetSize
 import app.evergreen.ui.DialogOpener
@@ -94,7 +95,7 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
         titleText = updatableViewModel.titleText
         contentText = updatableViewModel.contentText
         setInfoAreaBackgroundColor(context.color(updatableViewModel.backgroundColor))
-        badgeImage = context.getDrawable(
+        badgeImage = context.drawable(
           when (updatableViewModel.versionStatus) {
             VERSION_OLDER_THAN_LATEST -> R.drawable.cellphone_arrow_down
             VERSION_NEWER_THAN_LATEST -> R.drawable.bomb

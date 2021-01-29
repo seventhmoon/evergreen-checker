@@ -26,6 +26,7 @@ import app.evergreen.config.MoshiAdapters
 import app.evergreen.config.Updatable
 import app.evergreen.config.Version
 import app.evergreen.data.Repo
+import app.evergreen.extensions.drawable
 import app.evergreen.extensions.toTargetSize
 import app.evergreen.extensions.toast
 import app.evergreen.services.log
@@ -50,7 +51,7 @@ class PrintLocalConfig(private val context: Context) : Tool {
     get() = context.getString(R.string.print_app_versions)
 
   override val mainImage: Drawable
-    get() = context.getDrawable(R.drawable.code_json)!!
+    get() = context.drawable(R.drawable.code_json)!!
       .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
       .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
       .toDrawable(context.resources)
