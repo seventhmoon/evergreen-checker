@@ -15,7 +15,7 @@ multiple places, this app automates the process.
 
 -   Locate the one with the icon below, and install it.
 
-    ![Evergreen Banner](https://google.github.io/evergreen-checker/evergreen-banner.png){: width="320" style="border: 1px solid #cdcdcd; border-radius: 16px"}
+    ![Evergreen Banner](docs/evergreen-banner.png){: width="320" style="border: 1px solid #cdcdcd; border-radius: 16px"}
 
 -   Press the Install button.
 
