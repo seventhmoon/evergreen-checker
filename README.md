@@ -7,6 +7,40 @@ of each.
 Instead of requiring dogfooders & engineers to manually check versions in
 multiple places, this app automates the process.
 
+## Installation
+
+### Via Google Assistant
+
+-   Say **“Install Evergreen App”**
+
+-   Locate the one with the icon below, and install it.
+
+    ![Evergreen Banner](https://google.github.io/evergreen-checker/evergreen-banner.png){: width="320" style="border: 1px solid #cdcdcd; border-radius: 16px"}
+
+-   Press the Install button.
+
+## How to Use
+
+1.  Start the Evergreen app: say “Launch Evergreen” to Assistant.
+
+1.  Look out for any apps in <span style="color:red">RED</span>.
+
+1.  Click on each app that is red, then click: UPDATE.
+
+1.  Repeat for all apps that appear in red.
+
+## For Developers Only
+
+#### How to update the config
+
+The easiest way to update the config is by using the app itself.
+
+-   Launch Evergreen
+-   Tools → Print Local Config
+-   Open `adb logcat` on a connected computer, copy the JSON, and paste it into
+    the location above.
+
+
 ## License
 
 This code & resources are distributed under the [Apache 2 License](LICENSE).
