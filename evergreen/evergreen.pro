@@ -27,10 +27,6 @@
 
 # Android defaults:
 # -----------------
--keepnames @com.google.android.gms.common.annotation.KeepName class *
--keepclassmembernames class * {
-    @com.google.android.gms.common.annotation.KeepName *;
-}
 -keepattributes Signature
 -assumenosideeffects class android.util.Log {
     public static *** d(...);
