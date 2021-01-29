@@ -33,7 +33,7 @@ import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
-class PrintLocalConfig(private val context: Context, private val dialogOpener: DialogOpener) : Tool {
+class AppVersions(private val context: Context, private val dialogOpener: DialogOpener) : Tool {
 
   private fun getInstalledVersion(updatable: Updatable): String? = when (updatable.kind) {
     Kind.APK -> {
@@ -77,6 +77,6 @@ class PrintLocalConfig(private val context: Context, private val dialogOpener: D
   }
 
   companion object {
-    private const val TAG = "PrintLocalConfig"
+    private const val TAG = "AppVersions"
   }
 }

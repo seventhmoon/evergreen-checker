@@ -34,7 +34,7 @@ class ToolsObjectAdapter(private val context: Context, private val dialogOpener:
 
   override fun get(position: Int): Tool = when (position) {
     0 -> DeviceConfig(context, dialogOpener)
-    1 -> PrintLocalConfig(context, dialogOpener)
+    1 -> AppVersions(context, dialogOpener)
     2 -> RequestForDevice(context, dialogOpener)
     3 -> AdbConfig(context, dialogOpener)
     4 -> LaunchPlayStore(context)
