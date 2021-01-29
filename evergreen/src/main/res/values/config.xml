@@ -15,5 +15,5 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="config_url">https://evergreen-config.appspot.com/<xliff:g id="device_spec">%1$s</xliff:g>.json</string>
+  <string name="config_url">https://google.github.io/evergreen-checker/config/<xliff:g id="device_spec">%1$s</xliff:g>.json</string>
 </resources>
