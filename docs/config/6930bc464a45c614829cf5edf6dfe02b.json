@@ -82,15 +82,6 @@
       }
     },
     {
-      "id": "com.hbo.hbonow",
-      "latestAlpha": {
-        "versionName": "50.10.1.116"
-      },
-      "latestProd": {
-        "versionName": "50.4.0.206"
-      }
-    },
-    {
       "id": "com.google.android.apps.tv.dreamx",
       "latestAlpha": {
         "versionName": "1.0.331776182-dogfood"

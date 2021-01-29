@@ -18,8 +18,7 @@
     },
     {
       "id": "com.google.android.gms",
-      "latestProd": { "versionName": "20.30.19 (080306-326531024)"
-}
+      "latestProd": { "versionName": "20.30.19 (080306-326531024)" }
     },
     {
       "id": "com.google.android.tv.remote.service",
@@ -36,10 +35,6 @@
     {
       "id": "com.google.android.apps.mediashell",
       "latestProd": { "versionName": "1.50.227001" }
-    },
-    {
-      "id": "com.hbo.hbonow",
-      "latestProd": { "versionName": "50.4.0.206" }
     },
     {
       "id": "com.google.android.apps.tv.dreamx",
