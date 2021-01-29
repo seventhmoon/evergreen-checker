@@ -1,0 +1,45 @@
+{
+  "updatables": [
+    {
+      "kind": "APK",
+      "latestProd": {
+        "versionName": "5.0.0.293681957"
+      },
+      "id": "com.google.android.katniss"
+    },
+    {
+      "kind": "APK",
+      "latestProd": {
+        "versionName": "1.42.175791"
+      },
+      "id": "com.google.android.apps.mediashell"
+    },
+    {
+      "kind": "APK",
+      "latestProd": {
+        "versionName": "1.0.274497977"
+      },
+      "id": "com.google.android.tungsten.setupwraith"
+    },
+    {
+      "kind": "APK",
+      "latestProd": {
+        "versionName": "1.42.175791"
+      },
+      "id": "com.google.android.apps.mediashell"
+    },
+    {
+      "kind": "APK",
+      "latestProd": {
+        "versionName": "1.0.273709606"
+      },
+      "id": "com.google.android.apps.tv.dreamx"
+    },
+    {
+      "kind": "SYSTEM_BUILD",
+      "latestProd": {
+        "versionName": "QTS1.200202.003"
+      }
+    }
+  ]
+}

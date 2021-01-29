@@ -1,0 +1,53 @@
+{
+  "updatables": [
+    {
+      "kind": "SYSTEM_BUILD",
+      "latestProd": { "versionName": "QTS1.200816.001.6767831 dev-keys" }
+    },
+    {
+      "id": "com.google.android.katniss",
+      "latestProd": { "versionName": "5.2.0.329654143" }
+    },
+    {
+      "id": "com.google.android.apps.tv.launcherx",
+      "latestProd": { "versionName": "1.0.329652974-fishfood" }
+    },
+    {
+      "id": "app.evergreen",
+      "latestProd": { "versionName": "0.8.1" }
+    },
+    {
+      "id": "com.google.android.gms",
+      "latestProd": { "versionName": "20.30.19 (080306-326531024)"
+}
+    },
+    {
+      "id": "com.google.android.tv.remote.service",
+      "latestProd": { "versionName": "4.3.326666043" }
+    },
+    {
+      "id": "com.google.android.inputmethod.latin",
+      "latestProd": { "versionName": "9.8.04.323765495-tv_preload-armeabi-v7a" }
+    },
+    {
+      "id": "com.android.vending",
+      "latestProd": { "versionName": "21.3.14-21 [8] [PR] 325140660" }
+    },
+    {
+      "id": "com.google.android.apps.mediashell",
+      "latestProd": { "versionName": "1.50.227001" }
+    },
+    {
+      "id": "com.hbo.hbonow",
+      "latestProd": { "versionName": "50.4.0.206" }
+    },
+    {
+      "id": "com.google.android.apps.tv.dreamx",
+      "latestProd": { "versionName": "1.0.326724661-fishfood" }
+    },
+    {
+      "id": "com.google.android.youtube.tv",
+      "latestProd": { "versionName": "2.11.06-DOGFOOD" }
+    }
+  ]
+}
