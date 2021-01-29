@@ -38,6 +38,8 @@ object Repo {
 
   private val errorsLiveData: MutableLiveData<FetchError> = MutableLiveData()
 
+  val deviceUniqueId = "$BRAND | $DEVICE | $PRODUCT"
+
   @get:AnyThread
   val evergreenConfig: LiveData<EvergreenConfig>
     get() = evergreenConfigLiveData
@@ -50,10 +52,8 @@ object Repo {
     log(TAG, "refreshFromServer")
     CoroutineScope(Dispatchers.Main).launch {
       withContext(Dispatchers.IO) {
-        val deviceUniqueId = "$BRAND | $DEVICE | $PRODUCT"
         val configUrl = getConfigUrl(context, deviceUniqueId)
         Log.e(TAG, "| $configUrl | $deviceUniqueId |")
-
         val jsonString = httpGet(configUrl)
         if (jsonString == null) {
           Log.i(TAG, deviceUniqueId)
