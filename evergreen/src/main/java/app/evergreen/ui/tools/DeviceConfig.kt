@@ -70,7 +70,7 @@ class DeviceConfig(private val context: Context, private val dialogOpener: Dialo
         "totalMem: ${memInfo.totalMem.humanReadableByteCountSI()} / " +
         "availMem: ${memInfo.availMem.humanReadableByteCountSI()}" +
         "\n" +
-        "BRAND:$BRAND / DEVICE:$DEVICE / PRODUCT:$PRODUCT / MODEL:$MODEL"
+        "BRAND: $BRAND / DEVICE: $DEVICE / PRODUCT: $PRODUCT / MODEL: $MODEL"
     log(TAG, deviceInfo)
 
     dialogOpener.invoke(
