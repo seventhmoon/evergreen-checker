@@ -15,11 +15,13 @@ multiple places, this app automates the process.
 
 -   Locate the one with the icon below, and install it.
 
-    <img src="docs/evergreen-banner.png" alt="Evergreen Banner" width="320" style="border: 1px solid #cdcdcd; border-radius: 16px">
+    <a href="docs/evergreen.mp4"><img src="docs/evergreen-banner.png" alt="Evergreen Banner" width="320" style="border: 1px solid #cdcdcd; border-radius: 16px"></a>
 
 -   Press the Install button.
 
 ## How to Use
+
+<a target="_blank" href="docs/evergreen.mp4">Watch Video</a>
 
 1.  Start the Evergreen app: say “Launch Evergreen” to Assistant.
 
@@ -28,10 +30,6 @@ multiple places, this app automates the process.
 1.  Click on each app that is red, then click: UPDATE.
 
 1.  Repeat for all apps that appear in red.
-
-<video style="width: 100%" controls autoplay>
-  <source src="docs/evergreen.mp4" type="video/mp4">
-</video>
 
 ## For Developers Only
 
@@ -43,7 +41,6 @@ The easiest way to update the config is by using the app itself.
 -   Tools → Print Local Config
 -   Open `adb logcat` on a connected computer, copy the JSON, and paste it into
     the location above.
-
 
 ## License
 
