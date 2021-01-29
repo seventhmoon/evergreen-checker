@@ -30,7 +30,7 @@ tasks.withType<KotlinCompile>().configureEach {
 dependencies {
   // Kotlin
   implementation(kotlin("stdlib", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION))
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0")
 
   // Moshi
   api("com.squareup.moshi:moshi:1.11.0")
