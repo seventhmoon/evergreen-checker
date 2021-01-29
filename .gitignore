@@ -4,6 +4,7 @@
 .gradle
 .idea
 .jekyll-metadata
+.sass-cache
 build/
 docs/_site
 keystore.properties
