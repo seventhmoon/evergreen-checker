@@ -21,8 +21,6 @@ plugins {
   id("com.android.application")
   id("kotlin-android")
   id("kotlin-android-extensions")
-  id("com.google.gms.google-services")
-  id("com.google.firebase.crashlytics")
 }
 
 val versionMajor = 0
@@ -101,8 +99,4 @@ dependencies {
   // Third Party Libraries
   implementation("com.squareup.okhttp3:okhttp:4.2.2")
   implementation("io.coil-kt:coil:0.9.5")
-
-  // Google Services
-  implementation("com.google.firebase:firebase-analytics-ktx:18.0.2")
-  implementation("com.google.firebase:firebase-crashlytics-ktx:17.3.1")
 }
