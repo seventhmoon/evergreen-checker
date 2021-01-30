@@ -15,4 +15,4 @@ exclude:
   - vendor
 github:
   - metadata
-repository: google/evergreen-checker
+repository: 'google/evergreen-checker'
