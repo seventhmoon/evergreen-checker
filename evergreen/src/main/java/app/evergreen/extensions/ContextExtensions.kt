@@ -53,12 +53,30 @@ fun Context.safeStartActivity(intent: Intent): Boolean {
   return try {
     startActivity(intent)
     true
+
   } catch (e: ActivityNotFoundException) {
-    toast(R.string.error_no_app_to_handle_this_action)
-    false
+    // If there was no matching app to handle this intent, then try the browser_fallback_url.
+    val browserFallbackUrl = intent.getStringExtra("browser_fallback_url")
+    if (browserFallbackUrl != null) {
+      safeStartActivity(Intent.parseUri(browserFallbackUrl, 0 /* flags */))
+    } else {
+      // [Intent.createChooser] will show a bottom-sheet with a “No app can handle this action” message.
+      startActivity(Intent.createChooser(intent, null))
+      false
+    }
+
   } catch (e: SecurityException) {
     toast(e.localizedMessage ?: e.message ?: getString(R.string.unknown))
     false
+
+  } catch (e: RuntimeException) {
+    // If the first attempt failed because this Context is not an Activity, then try again with the explicit flag to
+    // create a new task, but only if that flag doesn’t already exist, otherwise this will cause a stack overflow.
+    if (intent.flags and Intent.FLAG_ACTIVITY_NEW_TASK != Intent.FLAG_ACTIVITY_NEW_TASK) {
+      safeStartActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    } else {
+      false
+    }
   }
 }
 
