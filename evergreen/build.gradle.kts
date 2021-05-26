@@ -92,7 +92,7 @@ dependencies {
   implementation("androidx.core:core-ktx:1.5.0")
   implementation("androidx.constraintlayout:constraintlayout:2.0.4")
   implementation("androidx.leanback:leanback:1.0.0")
-  implementation("androidx.work:work-runtime:2.4.0")
+  implementation("androidx.work:work-runtime:2.5.0")
 
   // Moshi
   api("com.squareup.moshi:moshi:1.11.0")
