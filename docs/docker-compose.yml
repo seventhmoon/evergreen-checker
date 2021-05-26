@@ -2,8 +2,8 @@ version: '3'
 
 services:
   site:
-    image: jekyll/jekyll:3.8.6
-    command: jekyll serve --livereload --verbose
+    image: jekyll/jekyll:4.2.0
+    command: jekyll serve --incremental
     ports:
       - 4000:4000
     volumes:
