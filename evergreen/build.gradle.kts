@@ -100,6 +100,6 @@ dependencies {
   kapt("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
 
   // Third Party Libraries
-  implementation("com.squareup.okhttp3:okhttp:4.9.0")
+  implementation("com.squareup.okhttp3:okhttp:4.9.1")
   implementation("io.coil-kt:coil:1.0.0")
 }
