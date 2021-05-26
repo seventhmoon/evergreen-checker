@@ -17,7 +17,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-  extra["kotlin_version"] = "1.4.21"
+  extra["kotlin_version"] = "1.5.0"
 
   repositories {
     google()
