@@ -26,3 +26,45 @@ information on using pull requests.
 
 This project follows [Google's Open Source Community
 Guidelines](https://opensource.google/conduct/).
+
+## Publishing to Google Play
+
+### Encrypted Keystore
+
+To encrypt:
+
+```shell
+gpg --symmetric --cipher-algo AES256 "signing-keys.keystore"
+```
+
+To decrypt:
+
+```shell
+gpg --quiet --batch --yes --decrypt \
+    --passphrase="$GPG_PASSPHRASE" \
+    --output "signing-keys.keystore" \
+    "signing-keys.keystore.gpg"
+```
+
+### Publish Store Listing
+```shell
+./gradlew publishListing
+```
+
+### Publish APK to Alpha
+```shell
+./gradlew publishReleaseApk
+```
+
+### Promote APK from Alpha to Beta & Staged Rollout
+
+```shell
+./gradlew promoteArtifact --promote-track beta
+./gradlew promoteArtifact --promote-track production --user-fraction 0.2
+```
+
+##### Ramp up Production to 100%
+
+```shell
+./gradlew promoteArtifact --promote-track production --release-status completed
+```
