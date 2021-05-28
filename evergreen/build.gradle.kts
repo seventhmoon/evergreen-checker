@@ -26,7 +26,7 @@ plugins {
 
 val versionMajor = 0
 val versionMinor = 11
-val versionPatch = 0
+val versionPatch = 1
 val isBeta = false
 
 android {
