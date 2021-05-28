@@ -22,7 +22,6 @@ import app.evergreen.R
 import app.evergreen.config.Updatable
 import app.evergreen.extensions.drawable
 import app.evergreen.services.AppServices.opener
-import app.evergreen.services.log
 
 class ApkViewModel(context: Context, updatable: Updatable) :
   AbstractUpdatableViewModel(context, updatable) {
@@ -35,7 +34,6 @@ class ApkViewModel(context: Context, updatable: Updatable) :
         @Suppress("DEPRECATION")
         context.packageManager.getPackageInfo(updatable.id!!, 0).versionName
       } catch (e: PackageManager.NameNotFoundException) {
-        log(TAG, e)
         null // App not installed, so it does not have a version name yet.
       }
     }
@@ -47,7 +45,6 @@ class ApkViewModel(context: Context, updatable: Updatable) :
       try {
         PackageInfoCompat.getLongVersionCode(context.packageManager.getPackageInfo(updatable.id!!, 0))
       } catch (e: PackageManager.NameNotFoundException) {
-        log(TAG, e)
         null // App not installed, so it does not have a version name yet.
       }
     }
@@ -59,14 +56,12 @@ class ApkViewModel(context: Context, updatable: Updatable) :
         context.packageManager.getPackageInfo(updatable.id!!, 0).applicationInfo
       ).toString()
     } catch (e: PackageManager.NameNotFoundException) {
-      log(TAG, e)
       updatable.id ?: context.getString(R.string.unknown)
     }
 
   override suspend fun getIcon(): Drawable = try {
     context.packageManager.getApplicationIcon(updatable.id!!)
   } catch (e: PackageManager.NameNotFoundException) {
-    log(TAG, e)
     context.drawable(R.drawable.apps)!!
   }
 
