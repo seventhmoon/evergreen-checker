@@ -1,0 +1,2 @@
+— Supported on all devices, even if no device-specific config is available.
+— New feature: Email Request: you can request to add a config for a device if it doesn’t already exist.

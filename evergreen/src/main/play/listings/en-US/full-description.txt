@@ -1,0 +1,3 @@
+Ensures that your Android TV is correctly configured.
+
+This app is intended for Android TV & Google Assistant engineers & partners; not for end users.
