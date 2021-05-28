@@ -42,16 +42,11 @@ android {
 
   signingConfigs {
     register("appSigningKey") {
-      val keystorePropsFile = File("../keys/keystore.properties")
-      if (keystorePropsFile.exists()) {
-        val props = Properties()
-        props.load(FileInputStream(keystorePropsFile))
-
-        storeFile = file(props.getProperty("APP_SIGNING_KEY_FILE"))
-        storePassword = props.getProperty("APP_SIGNING_KEY_STORE_PASSWORD")
-        keyAlias = props.getProperty("APP_SIGNING_KEY_ALIAS")
-        keyPassword = props.getProperty("APP_SIGNING_KEY_KEY_PASSWORD")
-      }
+      isV2SigningEnabled = true
+      storeFile = file("../signing-keys.keystore")
+      storePassword = System.getenv("KEYSTORE_PASSWORD")
+      keyAlias = "evergreen"
+      keyPassword = System.getenv("KEYSTORE_PASSWORD")
     }
   }
 
