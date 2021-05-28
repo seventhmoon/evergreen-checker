@@ -21,6 +21,7 @@ plugins {
   id("com.android.application")
   id("kotlin-android")
   kotlin("kapt")
+  id("com.github.triplet.play") version "3.4.0"
 }
 
 val versionMajor = 0
@@ -102,4 +103,15 @@ dependencies {
   // Third Party Libraries
   implementation("com.squareup.okhttp3:okhttp:4.9.1")
   implementation("io.coil-kt:coil:1.2.1")
+}
+
+play {
+  serviceAccountCredentials.set(file("../service-account-keys.json"))
+
+  // GitHub Actions automatically pushes to Alpha, so that’s our starting point.
+  track.set("alpha")
+  fromTrack.set("alpha")
+
+  // By default, promote to Beta (without requiring any additional arguments on the command line.)
+  promoteTrack.set("beta")
 }
