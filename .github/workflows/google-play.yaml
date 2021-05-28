@@ -14,13 +14,14 @@ jobs:
       with:
         java-version: 1.8
 
+    - name: Make scripts executable
+      run: chmod +x ./gradlew ./decrypt-secrets.sh
+
     - name: Read GitHub Secrets & Decrypt Encrypted Files
       env:
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
       run: |
-        pwd
-        ls
         ./decrypt-secrets.sh
         echo "KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD" >> $GITHUB_ENV
 
