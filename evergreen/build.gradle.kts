@@ -16,7 +16,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.FileInputStream
 import java.util.*
 
-
 plugins {
   id("com.android.application")
   id("kotlin-android")
@@ -27,7 +26,6 @@ plugins {
 val versionMajor = 0
 val versionMinor = 11
 val versionPatch = 5
-val isBeta = false
 
 android {
   compileSdkVersion(29)
@@ -36,7 +34,7 @@ android {
     minSdkVersion(23)
     targetSdkVersion(29)
     versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
-    versionName = "${versionMajor}.${versionMinor}.${versionPatch}" + if (isBeta) "-BETA" else ""
+    versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
     vectorDrawables.useSupportLibrary = true
   }
 
